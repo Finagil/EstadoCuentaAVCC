@@ -23,48 +23,26 @@ Partial Class frmEstadoCuentaAvio
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle18 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle19 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle20 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle21 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle22 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle23 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle24 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle25 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle26 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle27 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle28 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.txtanexo = New System.Windows.Forms.TextBox()
         Me.txtCiclo = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.ButtonCargar = New System.Windows.Forms.Button()
         Me.DataGridORG = New System.Windows.Forms.DataGridView()
-        Me.DetalleFINAGILBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.ProductionDataSet = New Estado_de_Cuenta.ProductionDataSet()
-        Me.LabelCliente = New System.Windows.Forms.Label()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.ClientesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.LBtotal = New System.Windows.Forms.Label()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.Button3 = New System.Windows.Forms.Button()
-        Me.DataGridCOPY = New System.Windows.Forms.DataGridView()
-        Me.DetalleFINAGILBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
-        Me.ProductionDataSet1 = New Estado_de_Cuenta.ProductionDataSet()
-        Me.LBtotal2 = New System.Windows.Forms.Label()
-        Me.ButtonReCalc = New System.Windows.Forms.Button()
-        Me.LbTotal3 = New System.Windows.Forms.Label()
-        Me.ButtonSave = New System.Windows.Forms.Button()
-        Me.ButtonCancelar = New System.Windows.Forms.Button()
-        Me.CheckProyectado = New System.Windows.Forms.CheckBox()
-        Me.DetalleFINAGILTableAdapter = New Estado_de_Cuenta.ProductionDataSetTableAdapters.DetalleFINAGILTableAdapter()
-        Me.ClientesTableAdapter = New Estado_de_Cuenta.ProductionDataSetTableAdapters.ClientesTableAdapter()
-        Me.DetalleFINAGILTableAdapter1 = New Estado_de_Cuenta.ProductionDataSetTableAdapters.DetalleFINAGILTableAdapter()
-        Me.ClientesTableAdapter1 = New Estado_de_Cuenta.ProductionDataSetTableAdapters.ClientesTableAdapter()
-        Me.LabelTipo = New System.Windows.Forms.Label()
         Me.AnexoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CicloDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ClienteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -87,6 +65,13 @@ Partial Class frmEstadoCuentaAvio
         Me.Factura = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.FolioFiscal = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ImporteExigible = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DetalleFINAGILBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.ProductionDataSet = New Estado_de_Cuenta.ProductionDataSet()
+        Me.LabelCliente = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.ClientesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.LBtotal = New System.Windows.Forms.Label()
+        Me.DataGridCOPY = New System.Windows.Forms.DataGridView()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -109,6 +94,19 @@ Partial Class frmEstadoCuentaAvio
         Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn17 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn18 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DetalleFINAGILBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
+        Me.ProductionDataSet1 = New Estado_de_Cuenta.ProductionDataSet()
+        Me.LBtotal2 = New System.Windows.Forms.Label()
+        Me.ButtonReCalc = New System.Windows.Forms.Button()
+        Me.LbTotal3 = New System.Windows.Forms.Label()
+        Me.ButtonSave = New System.Windows.Forms.Button()
+        Me.ButtonCancelar = New System.Windows.Forms.Button()
+        Me.CheckProyectado = New System.Windows.Forms.CheckBox()
+        Me.DetalleFINAGILTableAdapter = New Estado_de_Cuenta.ProductionDataSetTableAdapters.DetalleFINAGILTableAdapter()
+        Me.ClientesTableAdapter = New Estado_de_Cuenta.ProductionDataSetTableAdapters.ClientesTableAdapter()
+        Me.DetalleFINAGILTableAdapter1 = New Estado_de_Cuenta.ProductionDataSetTableAdapters.DetalleFINAGILTableAdapter()
+        Me.ClientesTableAdapter1 = New Estado_de_Cuenta.ProductionDataSetTableAdapters.ClientesTableAdapter()
+        Me.LabelTipo = New System.Windows.Forms.Label()
         CType(Me.DataGridORG, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DetalleFINAGILBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ProductionDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -175,6 +173,188 @@ Partial Class frmEstadoCuentaAvio
         Me.DataGridORG.Size = New System.Drawing.Size(1268, 233)
         Me.DataGridORG.TabIndex = 5
         '
+        'AnexoDataGridViewTextBoxColumn
+        '
+        Me.AnexoDataGridViewTextBoxColumn.DataPropertyName = "Anexo"
+        Me.AnexoDataGridViewTextBoxColumn.HeaderText = "Anexo"
+        Me.AnexoDataGridViewTextBoxColumn.Name = "AnexoDataGridViewTextBoxColumn"
+        Me.AnexoDataGridViewTextBoxColumn.ReadOnly = True
+        Me.AnexoDataGridViewTextBoxColumn.Width = 70
+        '
+        'CicloDataGridViewTextBoxColumn
+        '
+        Me.CicloDataGridViewTextBoxColumn.DataPropertyName = "Ciclo"
+        Me.CicloDataGridViewTextBoxColumn.HeaderText = "Ciclo"
+        Me.CicloDataGridViewTextBoxColumn.Name = "CicloDataGridViewTextBoxColumn"
+        Me.CicloDataGridViewTextBoxColumn.ReadOnly = True
+        Me.CicloDataGridViewTextBoxColumn.Width = 40
+        '
+        'ClienteDataGridViewTextBoxColumn
+        '
+        Me.ClienteDataGridViewTextBoxColumn.DataPropertyName = "Cliente"
+        Me.ClienteDataGridViewTextBoxColumn.HeaderText = "Cliente"
+        Me.ClienteDataGridViewTextBoxColumn.Name = "ClienteDataGridViewTextBoxColumn"
+        Me.ClienteDataGridViewTextBoxColumn.Visible = False
+        '
+        'ConsecutivoDataGridViewTextBoxColumn
+        '
+        Me.ConsecutivoDataGridViewTextBoxColumn.DataPropertyName = "Consecutivo"
+        Me.ConsecutivoDataGridViewTextBoxColumn.HeaderText = "Consec."
+        Me.ConsecutivoDataGridViewTextBoxColumn.Name = "ConsecutivoDataGridViewTextBoxColumn"
+        Me.ConsecutivoDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ConsecutivoDataGridViewTextBoxColumn.Width = 50
+        '
+        'FechaInicialDataGridViewTextBoxColumn
+        '
+        Me.FechaInicialDataGridViewTextBoxColumn.DataPropertyName = "FechaInicial"
+        Me.FechaInicialDataGridViewTextBoxColumn.HeaderText = "FechaInicial"
+        Me.FechaInicialDataGridViewTextBoxColumn.Name = "FechaInicialDataGridViewTextBoxColumn"
+        Me.FechaInicialDataGridViewTextBoxColumn.Width = 70
+        '
+        'FechaFinalDataGridViewTextBoxColumn
+        '
+        Me.FechaFinalDataGridViewTextBoxColumn.DataPropertyName = "FechaFinal"
+        Me.FechaFinalDataGridViewTextBoxColumn.HeaderText = "FechaFinal"
+        Me.FechaFinalDataGridViewTextBoxColumn.Name = "FechaFinalDataGridViewTextBoxColumn"
+        Me.FechaFinalDataGridViewTextBoxColumn.Width = 70
+        '
+        'DiasDataGridViewTextBoxColumn
+        '
+        Me.DiasDataGridViewTextBoxColumn.DataPropertyName = "Dias"
+        Me.DiasDataGridViewTextBoxColumn.HeaderText = "Dias"
+        Me.DiasDataGridViewTextBoxColumn.Name = "DiasDataGridViewTextBoxColumn"
+        Me.DiasDataGridViewTextBoxColumn.Width = 40
+        '
+        'TasaBPDataGridViewTextBoxColumn
+        '
+        Me.TasaBPDataGridViewTextBoxColumn.DataPropertyName = "TasaBP"
+        Me.TasaBPDataGridViewTextBoxColumn.HeaderText = "TasaBP"
+        Me.TasaBPDataGridViewTextBoxColumn.Name = "TasaBPDataGridViewTextBoxColumn"
+        Me.TasaBPDataGridViewTextBoxColumn.ReadOnly = True
+        Me.TasaBPDataGridViewTextBoxColumn.Width = 60
+        '
+        'SaldoInicialDataGridViewTextBoxColumn
+        '
+        Me.SaldoInicialDataGridViewTextBoxColumn.DataPropertyName = "SaldoInicial"
+        DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle15.Format = "N2"
+        DataGridViewCellStyle15.NullValue = Nothing
+        Me.SaldoInicialDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle15
+        Me.SaldoInicialDataGridViewTextBoxColumn.HeaderText = "SaldoInicial"
+        Me.SaldoInicialDataGridViewTextBoxColumn.Name = "SaldoInicialDataGridViewTextBoxColumn"
+        Me.SaldoInicialDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'ConceptoDataGridViewTextBoxColumn
+        '
+        Me.ConceptoDataGridViewTextBoxColumn.DataPropertyName = "Concepto"
+        Me.ConceptoDataGridViewTextBoxColumn.HeaderText = "Concepto"
+        Me.ConceptoDataGridViewTextBoxColumn.Name = "ConceptoDataGridViewTextBoxColumn"
+        Me.ConceptoDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'ImporteDataGridViewTextBoxColumn
+        '
+        Me.ImporteDataGridViewTextBoxColumn.DataPropertyName = "Importe"
+        DataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle16.Format = "N2"
+        DataGridViewCellStyle16.NullValue = Nothing
+        Me.ImporteDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle16
+        Me.ImporteDataGridViewTextBoxColumn.HeaderText = "Importe"
+        Me.ImporteDataGridViewTextBoxColumn.Name = "ImporteDataGridViewTextBoxColumn"
+        '
+        'FEGADataGridViewTextBoxColumn
+        '
+        Me.FEGADataGridViewTextBoxColumn.DataPropertyName = "FEGA"
+        DataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle17.Format = "N2"
+        DataGridViewCellStyle17.NullValue = Nothing
+        Me.FEGADataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle17
+        Me.FEGADataGridViewTextBoxColumn.HeaderText = "FEGA"
+        Me.FEGADataGridViewTextBoxColumn.Name = "FEGADataGridViewTextBoxColumn"
+        '
+        'GarantiaDataGridViewTextBoxColumn
+        '
+        Me.GarantiaDataGridViewTextBoxColumn.DataPropertyName = "Garantia"
+        DataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle18.Format = "N2"
+        DataGridViewCellStyle18.NullValue = Nothing
+        Me.GarantiaDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle18
+        Me.GarantiaDataGridViewTextBoxColumn.HeaderText = "Garantia"
+        Me.GarantiaDataGridViewTextBoxColumn.Name = "GarantiaDataGridViewTextBoxColumn"
+        '
+        'InteresesDataGridViewTextBoxColumn
+        '
+        Me.InteresesDataGridViewTextBoxColumn.DataPropertyName = "Intereses"
+        DataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle19.Format = "N2"
+        DataGridViewCellStyle19.NullValue = Nothing
+        Me.InteresesDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle19
+        Me.InteresesDataGridViewTextBoxColumn.HeaderText = "Intereses"
+        Me.InteresesDataGridViewTextBoxColumn.Name = "InteresesDataGridViewTextBoxColumn"
+        Me.InteresesDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'SaldoFinalDataGridViewTextBoxColumn
+        '
+        Me.SaldoFinalDataGridViewTextBoxColumn.DataPropertyName = "SaldoFinal"
+        DataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle20.Format = "N2"
+        DataGridViewCellStyle20.NullValue = Nothing
+        Me.SaldoFinalDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle20
+        Me.SaldoFinalDataGridViewTextBoxColumn.HeaderText = "SaldoFinal"
+        Me.SaldoFinalDataGridViewTextBoxColumn.Name = "SaldoFinalDataGridViewTextBoxColumn"
+        Me.SaldoFinalDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'TrdtDataGridViewTextBoxColumn
+        '
+        Me.TrdtDataGridViewTextBoxColumn.DataPropertyName = "trdt"
+        Me.TrdtDataGridViewTextBoxColumn.HeaderText = "trdt"
+        Me.TrdtDataGridViewTextBoxColumn.Name = "TrdtDataGridViewTextBoxColumn"
+        Me.TrdtDataGridViewTextBoxColumn.Visible = False
+        '
+        'ProvinteDataGridViewCheckBoxColumn
+        '
+        Me.ProvinteDataGridViewCheckBoxColumn.DataPropertyName = "provinte"
+        Me.ProvinteDataGridViewCheckBoxColumn.HeaderText = "provinte"
+        Me.ProvinteDataGridViewCheckBoxColumn.Name = "ProvinteDataGridViewCheckBoxColumn"
+        Me.ProvinteDataGridViewCheckBoxColumn.Visible = False
+        '
+        'Minds
+        '
+        Me.Minds.DataPropertyName = "Minds"
+        Me.Minds.HeaderText = "Minds"
+        Me.Minds.Name = "Minds"
+        Me.Minds.Visible = False
+        '
+        'Facturado
+        '
+        Me.Facturado.DataPropertyName = "Facturado"
+        Me.Facturado.HeaderText = "Facturado"
+        Me.Facturado.Name = "Facturado"
+        Me.Facturado.Visible = False
+        '
+        'Factura
+        '
+        Me.Factura.DataPropertyName = "Factura"
+        Me.Factura.HeaderText = "Factura"
+        Me.Factura.Name = "Factura"
+        Me.Factura.Visible = False
+        '
+        'FolioFiscal
+        '
+        Me.FolioFiscal.DataPropertyName = "FolioFiscal"
+        Me.FolioFiscal.HeaderText = "FolioFiscal"
+        Me.FolioFiscal.Name = "FolioFiscal"
+        Me.FolioFiscal.Visible = False
+        '
+        'ImporteExigible
+        '
+        Me.ImporteExigible.DataPropertyName = "ImporteExigible"
+        DataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight
+        DataGridViewCellStyle21.Format = "N2"
+        Me.ImporteExigible.DefaultCellStyle = DataGridViewCellStyle21
+        Me.ImporteExigible.HeaderText = "ImporteExigible"
+        Me.ImporteExigible.Name = "ImporteExigible"
+        Me.ImporteExigible.ReadOnly = True
+        '
         'DetalleFINAGILBindingSource
         '
         Me.DetalleFINAGILBindingSource.DataMember = "DetalleFINAGIL"
@@ -222,28 +402,6 @@ Partial Class frmEstadoCuentaAvio
         Me.LBtotal.TabIndex = 8
         Me.LBtotal.Text = "0.0"
         '
-        'Button2
-        '
-        Me.Button2.Enabled = False
-        Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
-        Me.Button2.Location = New System.Drawing.Point(723, 12)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(79, 42)
-        Me.Button2.TabIndex = 9
-        Me.Button2.Text = "Recalcular Edo. Cuenta"
-        Me.Button2.UseVisualStyleBackColor = True
-        '
-        'Button3
-        '
-        Me.Button3.Enabled = False
-        Me.Button3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
-        Me.Button3.Location = New System.Drawing.Point(808, 12)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(79, 42)
-        Me.Button3.TabIndex = 10
-        Me.Button3.Text = "Guardar Edo. Cuenta"
-        Me.Button3.UseVisualStyleBackColor = True
-        '
         'DataGridCOPY
         '
         Me.DataGridCOPY.AutoGenerateColumns = False
@@ -254,6 +412,188 @@ Partial Class frmEstadoCuentaAvio
         Me.DataGridCOPY.Name = "DataGridCOPY"
         Me.DataGridCOPY.Size = New System.Drawing.Size(1268, 233)
         Me.DataGridCOPY.TabIndex = 11
+        '
+        'DataGridViewTextBoxColumn1
+        '
+        Me.DataGridViewTextBoxColumn1.DataPropertyName = "Anexo"
+        Me.DataGridViewTextBoxColumn1.HeaderText = "Anexo"
+        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
+        Me.DataGridViewTextBoxColumn1.ReadOnly = True
+        Me.DataGridViewTextBoxColumn1.Width = 70
+        '
+        'DataGridViewTextBoxColumn2
+        '
+        Me.DataGridViewTextBoxColumn2.DataPropertyName = "Ciclo"
+        Me.DataGridViewTextBoxColumn2.HeaderText = "Ciclo"
+        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
+        Me.DataGridViewTextBoxColumn2.ReadOnly = True
+        Me.DataGridViewTextBoxColumn2.Width = 40
+        '
+        'DataGridViewTextBoxColumn3
+        '
+        Me.DataGridViewTextBoxColumn3.DataPropertyName = "Cliente"
+        Me.DataGridViewTextBoxColumn3.HeaderText = "Cliente"
+        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
+        Me.DataGridViewTextBoxColumn3.Visible = False
+        '
+        'DataGridViewTextBoxColumn4
+        '
+        Me.DataGridViewTextBoxColumn4.DataPropertyName = "Consecutivo"
+        Me.DataGridViewTextBoxColumn4.HeaderText = "Consec."
+        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
+        Me.DataGridViewTextBoxColumn4.ReadOnly = True
+        Me.DataGridViewTextBoxColumn4.Width = 50
+        '
+        'DataGridViewTextBoxColumn5
+        '
+        Me.DataGridViewTextBoxColumn5.DataPropertyName = "FechaInicial"
+        Me.DataGridViewTextBoxColumn5.HeaderText = "FechaInicial"
+        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
+        Me.DataGridViewTextBoxColumn5.Width = 70
+        '
+        'DataGridViewTextBoxFechaFinal
+        '
+        Me.DataGridViewTextBoxFechaFinal.DataPropertyName = "FechaFinal"
+        Me.DataGridViewTextBoxFechaFinal.HeaderText = "FechaFinal"
+        Me.DataGridViewTextBoxFechaFinal.Name = "DataGridViewTextBoxFechaFinal"
+        Me.DataGridViewTextBoxFechaFinal.Width = 70
+        '
+        'DataGridViewTextBoxColumn7
+        '
+        Me.DataGridViewTextBoxColumn7.DataPropertyName = "Dias"
+        Me.DataGridViewTextBoxColumn7.HeaderText = "Dias"
+        Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
+        Me.DataGridViewTextBoxColumn7.Width = 40
+        '
+        'DataGridViewTextBoxColumn8
+        '
+        Me.DataGridViewTextBoxColumn8.DataPropertyName = "TasaBP"
+        Me.DataGridViewTextBoxColumn8.HeaderText = "TasaBP"
+        Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
+        Me.DataGridViewTextBoxColumn8.ReadOnly = True
+        Me.DataGridViewTextBoxColumn8.Width = 60
+        '
+        'DataGridViewTextBoxColumn9
+        '
+        Me.DataGridViewTextBoxColumn9.DataPropertyName = "SaldoInicial"
+        DataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle22.Format = "N2"
+        DataGridViewCellStyle22.NullValue = Nothing
+        Me.DataGridViewTextBoxColumn9.DefaultCellStyle = DataGridViewCellStyle22
+        Me.DataGridViewTextBoxColumn9.HeaderText = "SaldoInicial"
+        Me.DataGridViewTextBoxColumn9.Name = "DataGridViewTextBoxColumn9"
+        Me.DataGridViewTextBoxColumn9.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn10
+        '
+        Me.DataGridViewTextBoxColumn10.DataPropertyName = "Concepto"
+        Me.DataGridViewTextBoxColumn10.HeaderText = "Concepto"
+        Me.DataGridViewTextBoxColumn10.Name = "DataGridViewTextBoxColumn10"
+        Me.DataGridViewTextBoxColumn10.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn11
+        '
+        Me.DataGridViewTextBoxColumn11.DataPropertyName = "Importe"
+        DataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle23.Format = "N2"
+        DataGridViewCellStyle23.NullValue = Nothing
+        Me.DataGridViewTextBoxColumn11.DefaultCellStyle = DataGridViewCellStyle23
+        Me.DataGridViewTextBoxColumn11.HeaderText = "Importe"
+        Me.DataGridViewTextBoxColumn11.Name = "DataGridViewTextBoxColumn11"
+        '
+        'DataGridViewTextBoxColumn12
+        '
+        Me.DataGridViewTextBoxColumn12.DataPropertyName = "FEGA"
+        DataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle24.Format = "N2"
+        DataGridViewCellStyle24.NullValue = Nothing
+        Me.DataGridViewTextBoxColumn12.DefaultCellStyle = DataGridViewCellStyle24
+        Me.DataGridViewTextBoxColumn12.HeaderText = "FEGA"
+        Me.DataGridViewTextBoxColumn12.Name = "DataGridViewTextBoxColumn12"
+        '
+        'DataGridViewTextBoxColumn13
+        '
+        Me.DataGridViewTextBoxColumn13.DataPropertyName = "Garantia"
+        DataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle25.Format = "N2"
+        DataGridViewCellStyle25.NullValue = Nothing
+        Me.DataGridViewTextBoxColumn13.DefaultCellStyle = DataGridViewCellStyle25
+        Me.DataGridViewTextBoxColumn13.HeaderText = "Garantia"
+        Me.DataGridViewTextBoxColumn13.Name = "DataGridViewTextBoxColumn13"
+        '
+        'DataGridViewTextBoxColumn14
+        '
+        Me.DataGridViewTextBoxColumn14.DataPropertyName = "Intereses"
+        DataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle26.Format = "N2"
+        DataGridViewCellStyle26.NullValue = Nothing
+        Me.DataGridViewTextBoxColumn14.DefaultCellStyle = DataGridViewCellStyle26
+        Me.DataGridViewTextBoxColumn14.HeaderText = "Intereses"
+        Me.DataGridViewTextBoxColumn14.Name = "DataGridViewTextBoxColumn14"
+        Me.DataGridViewTextBoxColumn14.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn15
+        '
+        Me.DataGridViewTextBoxColumn15.DataPropertyName = "SaldoFinal"
+        DataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle27.Format = "N2"
+        DataGridViewCellStyle27.NullValue = Nothing
+        Me.DataGridViewTextBoxColumn15.DefaultCellStyle = DataGridViewCellStyle27
+        Me.DataGridViewTextBoxColumn15.HeaderText = "SaldoFinal"
+        Me.DataGridViewTextBoxColumn15.Name = "DataGridViewTextBoxColumn15"
+        Me.DataGridViewTextBoxColumn15.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn16
+        '
+        Me.DataGridViewTextBoxColumn16.DataPropertyName = "trdt"
+        Me.DataGridViewTextBoxColumn16.HeaderText = "trdt"
+        Me.DataGridViewTextBoxColumn16.Name = "DataGridViewTextBoxColumn16"
+        Me.DataGridViewTextBoxColumn16.Visible = False
+        '
+        'DataGridViewCheckBoxColumn1
+        '
+        Me.DataGridViewCheckBoxColumn1.DataPropertyName = "provinte"
+        Me.DataGridViewCheckBoxColumn1.HeaderText = "provinte"
+        Me.DataGridViewCheckBoxColumn1.Name = "DataGridViewCheckBoxColumn1"
+        Me.DataGridViewCheckBoxColumn1.Visible = False
+        '
+        'Column1
+        '
+        Me.Column1.DataPropertyName = "Minds"
+        Me.Column1.HeaderText = "Column1"
+        Me.Column1.Name = "Column1"
+        Me.Column1.Visible = False
+        '
+        'DataGridViewCheckBoxColumn2
+        '
+        Me.DataGridViewCheckBoxColumn2.DataPropertyName = "Facturado"
+        Me.DataGridViewCheckBoxColumn2.HeaderText = "Facturado"
+        Me.DataGridViewCheckBoxColumn2.Name = "DataGridViewCheckBoxColumn2"
+        Me.DataGridViewCheckBoxColumn2.Visible = False
+        '
+        'DataGridViewTextBoxColumn6
+        '
+        Me.DataGridViewTextBoxColumn6.DataPropertyName = "Factura"
+        Me.DataGridViewTextBoxColumn6.HeaderText = "Factura"
+        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
+        Me.DataGridViewTextBoxColumn6.Visible = False
+        '
+        'DataGridViewTextBoxColumn17
+        '
+        Me.DataGridViewTextBoxColumn17.DataPropertyName = "FolioFiscal"
+        Me.DataGridViewTextBoxColumn17.HeaderText = "FolioFiscal"
+        Me.DataGridViewTextBoxColumn17.Name = "DataGridViewTextBoxColumn17"
+        Me.DataGridViewTextBoxColumn17.Visible = False
+        '
+        'DataGridViewTextBoxColumn18
+        '
+        Me.DataGridViewTextBoxColumn18.DataPropertyName = "ImporteExigible"
+        DataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight
+        DataGridViewCellStyle28.Format = "n2"
+        Me.DataGridViewTextBoxColumn18.DefaultCellStyle = DataGridViewCellStyle28
+        Me.DataGridViewTextBoxColumn18.HeaderText = "ImporteExigible"
+        Me.DataGridViewTextBoxColumn18.Name = "DataGridViewTextBoxColumn18"
+        Me.DataGridViewTextBoxColumn18.ReadOnly = True
         '
         'DetalleFINAGILBindingSource1
         '
@@ -353,370 +693,6 @@ Partial Class frmEstadoCuentaAvio
         Me.LabelTipo.TabIndex = 18
         Me.LabelTipo.Text = "Nombre:"
         '
-        'AnexoDataGridViewTextBoxColumn
-        '
-        Me.AnexoDataGridViewTextBoxColumn.DataPropertyName = "Anexo"
-        Me.AnexoDataGridViewTextBoxColumn.HeaderText = "Anexo"
-        Me.AnexoDataGridViewTextBoxColumn.Name = "AnexoDataGridViewTextBoxColumn"
-        Me.AnexoDataGridViewTextBoxColumn.ReadOnly = True
-        Me.AnexoDataGridViewTextBoxColumn.Width = 70
-        '
-        'CicloDataGridViewTextBoxColumn
-        '
-        Me.CicloDataGridViewTextBoxColumn.DataPropertyName = "Ciclo"
-        Me.CicloDataGridViewTextBoxColumn.HeaderText = "Ciclo"
-        Me.CicloDataGridViewTextBoxColumn.Name = "CicloDataGridViewTextBoxColumn"
-        Me.CicloDataGridViewTextBoxColumn.ReadOnly = True
-        Me.CicloDataGridViewTextBoxColumn.Width = 40
-        '
-        'ClienteDataGridViewTextBoxColumn
-        '
-        Me.ClienteDataGridViewTextBoxColumn.DataPropertyName = "Cliente"
-        Me.ClienteDataGridViewTextBoxColumn.HeaderText = "Cliente"
-        Me.ClienteDataGridViewTextBoxColumn.Name = "ClienteDataGridViewTextBoxColumn"
-        Me.ClienteDataGridViewTextBoxColumn.Visible = False
-        '
-        'ConsecutivoDataGridViewTextBoxColumn
-        '
-        Me.ConsecutivoDataGridViewTextBoxColumn.DataPropertyName = "Consecutivo"
-        Me.ConsecutivoDataGridViewTextBoxColumn.HeaderText = "Consec."
-        Me.ConsecutivoDataGridViewTextBoxColumn.Name = "ConsecutivoDataGridViewTextBoxColumn"
-        Me.ConsecutivoDataGridViewTextBoxColumn.ReadOnly = True
-        Me.ConsecutivoDataGridViewTextBoxColumn.Width = 50
-        '
-        'FechaInicialDataGridViewTextBoxColumn
-        '
-        Me.FechaInicialDataGridViewTextBoxColumn.DataPropertyName = "FechaInicial"
-        Me.FechaInicialDataGridViewTextBoxColumn.HeaderText = "FechaInicial"
-        Me.FechaInicialDataGridViewTextBoxColumn.Name = "FechaInicialDataGridViewTextBoxColumn"
-        Me.FechaInicialDataGridViewTextBoxColumn.Width = 70
-        '
-        'FechaFinalDataGridViewTextBoxColumn
-        '
-        Me.FechaFinalDataGridViewTextBoxColumn.DataPropertyName = "FechaFinal"
-        Me.FechaFinalDataGridViewTextBoxColumn.HeaderText = "FechaFinal"
-        Me.FechaFinalDataGridViewTextBoxColumn.Name = "FechaFinalDataGridViewTextBoxColumn"
-        Me.FechaFinalDataGridViewTextBoxColumn.Width = 70
-        '
-        'DiasDataGridViewTextBoxColumn
-        '
-        Me.DiasDataGridViewTextBoxColumn.DataPropertyName = "Dias"
-        Me.DiasDataGridViewTextBoxColumn.HeaderText = "Dias"
-        Me.DiasDataGridViewTextBoxColumn.Name = "DiasDataGridViewTextBoxColumn"
-        Me.DiasDataGridViewTextBoxColumn.Width = 40
-        '
-        'TasaBPDataGridViewTextBoxColumn
-        '
-        Me.TasaBPDataGridViewTextBoxColumn.DataPropertyName = "TasaBP"
-        Me.TasaBPDataGridViewTextBoxColumn.HeaderText = "TasaBP"
-        Me.TasaBPDataGridViewTextBoxColumn.Name = "TasaBPDataGridViewTextBoxColumn"
-        Me.TasaBPDataGridViewTextBoxColumn.ReadOnly = True
-        Me.TasaBPDataGridViewTextBoxColumn.Width = 60
-        '
-        'SaldoInicialDataGridViewTextBoxColumn
-        '
-        Me.SaldoInicialDataGridViewTextBoxColumn.DataPropertyName = "SaldoInicial"
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle1.Format = "N2"
-        DataGridViewCellStyle1.NullValue = Nothing
-        Me.SaldoInicialDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle1
-        Me.SaldoInicialDataGridViewTextBoxColumn.HeaderText = "SaldoInicial"
-        Me.SaldoInicialDataGridViewTextBoxColumn.Name = "SaldoInicialDataGridViewTextBoxColumn"
-        Me.SaldoInicialDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'ConceptoDataGridViewTextBoxColumn
-        '
-        Me.ConceptoDataGridViewTextBoxColumn.DataPropertyName = "Concepto"
-        Me.ConceptoDataGridViewTextBoxColumn.HeaderText = "Concepto"
-        Me.ConceptoDataGridViewTextBoxColumn.Name = "ConceptoDataGridViewTextBoxColumn"
-        Me.ConceptoDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'ImporteDataGridViewTextBoxColumn
-        '
-        Me.ImporteDataGridViewTextBoxColumn.DataPropertyName = "Importe"
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle2.Format = "N2"
-        DataGridViewCellStyle2.NullValue = Nothing
-        Me.ImporteDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle2
-        Me.ImporteDataGridViewTextBoxColumn.HeaderText = "Importe"
-        Me.ImporteDataGridViewTextBoxColumn.Name = "ImporteDataGridViewTextBoxColumn"
-        '
-        'FEGADataGridViewTextBoxColumn
-        '
-        Me.FEGADataGridViewTextBoxColumn.DataPropertyName = "FEGA"
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle3.Format = "N2"
-        DataGridViewCellStyle3.NullValue = Nothing
-        Me.FEGADataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle3
-        Me.FEGADataGridViewTextBoxColumn.HeaderText = "FEGA"
-        Me.FEGADataGridViewTextBoxColumn.Name = "FEGADataGridViewTextBoxColumn"
-        '
-        'GarantiaDataGridViewTextBoxColumn
-        '
-        Me.GarantiaDataGridViewTextBoxColumn.DataPropertyName = "Garantia"
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle4.Format = "N2"
-        DataGridViewCellStyle4.NullValue = Nothing
-        Me.GarantiaDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle4
-        Me.GarantiaDataGridViewTextBoxColumn.HeaderText = "Garantia"
-        Me.GarantiaDataGridViewTextBoxColumn.Name = "GarantiaDataGridViewTextBoxColumn"
-        '
-        'InteresesDataGridViewTextBoxColumn
-        '
-        Me.InteresesDataGridViewTextBoxColumn.DataPropertyName = "Intereses"
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle5.Format = "N2"
-        DataGridViewCellStyle5.NullValue = Nothing
-        Me.InteresesDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle5
-        Me.InteresesDataGridViewTextBoxColumn.HeaderText = "Intereses"
-        Me.InteresesDataGridViewTextBoxColumn.Name = "InteresesDataGridViewTextBoxColumn"
-        Me.InteresesDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'SaldoFinalDataGridViewTextBoxColumn
-        '
-        Me.SaldoFinalDataGridViewTextBoxColumn.DataPropertyName = "SaldoFinal"
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle6.Format = "N2"
-        DataGridViewCellStyle6.NullValue = Nothing
-        Me.SaldoFinalDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle6
-        Me.SaldoFinalDataGridViewTextBoxColumn.HeaderText = "SaldoFinal"
-        Me.SaldoFinalDataGridViewTextBoxColumn.Name = "SaldoFinalDataGridViewTextBoxColumn"
-        Me.SaldoFinalDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'TrdtDataGridViewTextBoxColumn
-        '
-        Me.TrdtDataGridViewTextBoxColumn.DataPropertyName = "trdt"
-        Me.TrdtDataGridViewTextBoxColumn.HeaderText = "trdt"
-        Me.TrdtDataGridViewTextBoxColumn.Name = "TrdtDataGridViewTextBoxColumn"
-        Me.TrdtDataGridViewTextBoxColumn.Visible = False
-        '
-        'ProvinteDataGridViewCheckBoxColumn
-        '
-        Me.ProvinteDataGridViewCheckBoxColumn.DataPropertyName = "provinte"
-        Me.ProvinteDataGridViewCheckBoxColumn.HeaderText = "provinte"
-        Me.ProvinteDataGridViewCheckBoxColumn.Name = "ProvinteDataGridViewCheckBoxColumn"
-        Me.ProvinteDataGridViewCheckBoxColumn.Visible = False
-        '
-        'Minds
-        '
-        Me.Minds.DataPropertyName = "Minds"
-        Me.Minds.HeaderText = "Minds"
-        Me.Minds.Name = "Minds"
-        Me.Minds.Visible = False
-        '
-        'Facturado
-        '
-        Me.Facturado.DataPropertyName = "Facturado"
-        Me.Facturado.HeaderText = "Facturado"
-        Me.Facturado.Name = "Facturado"
-        Me.Facturado.Visible = False
-        '
-        'Factura
-        '
-        Me.Factura.DataPropertyName = "Factura"
-        Me.Factura.HeaderText = "Factura"
-        Me.Factura.Name = "Factura"
-        Me.Factura.Visible = False
-        '
-        'FolioFiscal
-        '
-        Me.FolioFiscal.DataPropertyName = "FolioFiscal"
-        Me.FolioFiscal.HeaderText = "FolioFiscal"
-        Me.FolioFiscal.Name = "FolioFiscal"
-        Me.FolioFiscal.Visible = False
-        '
-        'ImporteExigible
-        '
-        Me.ImporteExigible.DataPropertyName = "ImporteExigible"
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight
-        DataGridViewCellStyle7.Format = "N2"
-        Me.ImporteExigible.DefaultCellStyle = DataGridViewCellStyle7
-        Me.ImporteExigible.HeaderText = "ImporteExigible"
-        Me.ImporteExigible.Name = "ImporteExigible"
-        Me.ImporteExigible.ReadOnly = True
-        '
-        'DataGridViewTextBoxColumn1
-        '
-        Me.DataGridViewTextBoxColumn1.DataPropertyName = "Anexo"
-        Me.DataGridViewTextBoxColumn1.HeaderText = "Anexo"
-        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
-        Me.DataGridViewTextBoxColumn1.ReadOnly = True
-        Me.DataGridViewTextBoxColumn1.Width = 70
-        '
-        'DataGridViewTextBoxColumn2
-        '
-        Me.DataGridViewTextBoxColumn2.DataPropertyName = "Ciclo"
-        Me.DataGridViewTextBoxColumn2.HeaderText = "Ciclo"
-        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
-        Me.DataGridViewTextBoxColumn2.ReadOnly = True
-        Me.DataGridViewTextBoxColumn2.Width = 40
-        '
-        'DataGridViewTextBoxColumn3
-        '
-        Me.DataGridViewTextBoxColumn3.DataPropertyName = "Cliente"
-        Me.DataGridViewTextBoxColumn3.HeaderText = "Cliente"
-        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
-        Me.DataGridViewTextBoxColumn3.Visible = False
-        '
-        'DataGridViewTextBoxColumn4
-        '
-        Me.DataGridViewTextBoxColumn4.DataPropertyName = "Consecutivo"
-        Me.DataGridViewTextBoxColumn4.HeaderText = "Consec."
-        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
-        Me.DataGridViewTextBoxColumn4.ReadOnly = True
-        Me.DataGridViewTextBoxColumn4.Width = 50
-        '
-        'DataGridViewTextBoxColumn5
-        '
-        Me.DataGridViewTextBoxColumn5.DataPropertyName = "FechaInicial"
-        Me.DataGridViewTextBoxColumn5.HeaderText = "FechaInicial"
-        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
-        Me.DataGridViewTextBoxColumn5.Width = 70
-        '
-        'DataGridViewTextBoxFechaFinal
-        '
-        Me.DataGridViewTextBoxFechaFinal.DataPropertyName = "FechaFinal"
-        Me.DataGridViewTextBoxFechaFinal.HeaderText = "FechaFinal"
-        Me.DataGridViewTextBoxFechaFinal.Name = "DataGridViewTextBoxFechaFinal"
-        Me.DataGridViewTextBoxFechaFinal.Width = 70
-        '
-        'DataGridViewTextBoxColumn7
-        '
-        Me.DataGridViewTextBoxColumn7.DataPropertyName = "Dias"
-        Me.DataGridViewTextBoxColumn7.HeaderText = "Dias"
-        Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
-        Me.DataGridViewTextBoxColumn7.Width = 40
-        '
-        'DataGridViewTextBoxColumn8
-        '
-        Me.DataGridViewTextBoxColumn8.DataPropertyName = "TasaBP"
-        Me.DataGridViewTextBoxColumn8.HeaderText = "TasaBP"
-        Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
-        Me.DataGridViewTextBoxColumn8.ReadOnly = True
-        Me.DataGridViewTextBoxColumn8.Width = 60
-        '
-        'DataGridViewTextBoxColumn9
-        '
-        Me.DataGridViewTextBoxColumn9.DataPropertyName = "SaldoInicial"
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle8.Format = "N2"
-        DataGridViewCellStyle8.NullValue = Nothing
-        Me.DataGridViewTextBoxColumn9.DefaultCellStyle = DataGridViewCellStyle8
-        Me.DataGridViewTextBoxColumn9.HeaderText = "SaldoInicial"
-        Me.DataGridViewTextBoxColumn9.Name = "DataGridViewTextBoxColumn9"
-        Me.DataGridViewTextBoxColumn9.ReadOnly = True
-        '
-        'DataGridViewTextBoxColumn10
-        '
-        Me.DataGridViewTextBoxColumn10.DataPropertyName = "Concepto"
-        Me.DataGridViewTextBoxColumn10.HeaderText = "Concepto"
-        Me.DataGridViewTextBoxColumn10.Name = "DataGridViewTextBoxColumn10"
-        Me.DataGridViewTextBoxColumn10.ReadOnly = True
-        '
-        'DataGridViewTextBoxColumn11
-        '
-        Me.DataGridViewTextBoxColumn11.DataPropertyName = "Importe"
-        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle9.Format = "N2"
-        DataGridViewCellStyle9.NullValue = Nothing
-        Me.DataGridViewTextBoxColumn11.DefaultCellStyle = DataGridViewCellStyle9
-        Me.DataGridViewTextBoxColumn11.HeaderText = "Importe"
-        Me.DataGridViewTextBoxColumn11.Name = "DataGridViewTextBoxColumn11"
-        '
-        'DataGridViewTextBoxColumn12
-        '
-        Me.DataGridViewTextBoxColumn12.DataPropertyName = "FEGA"
-        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle10.Format = "N2"
-        DataGridViewCellStyle10.NullValue = Nothing
-        Me.DataGridViewTextBoxColumn12.DefaultCellStyle = DataGridViewCellStyle10
-        Me.DataGridViewTextBoxColumn12.HeaderText = "FEGA"
-        Me.DataGridViewTextBoxColumn12.Name = "DataGridViewTextBoxColumn12"
-        '
-        'DataGridViewTextBoxColumn13
-        '
-        Me.DataGridViewTextBoxColumn13.DataPropertyName = "Garantia"
-        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle11.Format = "N2"
-        DataGridViewCellStyle11.NullValue = Nothing
-        Me.DataGridViewTextBoxColumn13.DefaultCellStyle = DataGridViewCellStyle11
-        Me.DataGridViewTextBoxColumn13.HeaderText = "Garantia"
-        Me.DataGridViewTextBoxColumn13.Name = "DataGridViewTextBoxColumn13"
-        '
-        'DataGridViewTextBoxColumn14
-        '
-        Me.DataGridViewTextBoxColumn14.DataPropertyName = "Intereses"
-        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle12.Format = "N2"
-        DataGridViewCellStyle12.NullValue = Nothing
-        Me.DataGridViewTextBoxColumn14.DefaultCellStyle = DataGridViewCellStyle12
-        Me.DataGridViewTextBoxColumn14.HeaderText = "Intereses"
-        Me.DataGridViewTextBoxColumn14.Name = "DataGridViewTextBoxColumn14"
-        Me.DataGridViewTextBoxColumn14.ReadOnly = True
-        '
-        'DataGridViewTextBoxColumn15
-        '
-        Me.DataGridViewTextBoxColumn15.DataPropertyName = "SaldoFinal"
-        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle13.Format = "N2"
-        DataGridViewCellStyle13.NullValue = Nothing
-        Me.DataGridViewTextBoxColumn15.DefaultCellStyle = DataGridViewCellStyle13
-        Me.DataGridViewTextBoxColumn15.HeaderText = "SaldoFinal"
-        Me.DataGridViewTextBoxColumn15.Name = "DataGridViewTextBoxColumn15"
-        Me.DataGridViewTextBoxColumn15.ReadOnly = True
-        '
-        'DataGridViewTextBoxColumn16
-        '
-        Me.DataGridViewTextBoxColumn16.DataPropertyName = "trdt"
-        Me.DataGridViewTextBoxColumn16.HeaderText = "trdt"
-        Me.DataGridViewTextBoxColumn16.Name = "DataGridViewTextBoxColumn16"
-        Me.DataGridViewTextBoxColumn16.Visible = False
-        '
-        'DataGridViewCheckBoxColumn1
-        '
-        Me.DataGridViewCheckBoxColumn1.DataPropertyName = "provinte"
-        Me.DataGridViewCheckBoxColumn1.HeaderText = "provinte"
-        Me.DataGridViewCheckBoxColumn1.Name = "DataGridViewCheckBoxColumn1"
-        Me.DataGridViewCheckBoxColumn1.Visible = False
-        '
-        'Column1
-        '
-        Me.Column1.DataPropertyName = "Minds"
-        Me.Column1.HeaderText = "Column1"
-        Me.Column1.Name = "Column1"
-        Me.Column1.Visible = False
-        '
-        'DataGridViewCheckBoxColumn2
-        '
-        Me.DataGridViewCheckBoxColumn2.DataPropertyName = "Facturado"
-        Me.DataGridViewCheckBoxColumn2.HeaderText = "Facturado"
-        Me.DataGridViewCheckBoxColumn2.Name = "DataGridViewCheckBoxColumn2"
-        Me.DataGridViewCheckBoxColumn2.Visible = False
-        '
-        'DataGridViewTextBoxColumn6
-        '
-        Me.DataGridViewTextBoxColumn6.DataPropertyName = "Factura"
-        Me.DataGridViewTextBoxColumn6.HeaderText = "Factura"
-        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
-        Me.DataGridViewTextBoxColumn6.Visible = False
-        '
-        'DataGridViewTextBoxColumn17
-        '
-        Me.DataGridViewTextBoxColumn17.DataPropertyName = "FolioFiscal"
-        Me.DataGridViewTextBoxColumn17.HeaderText = "FolioFiscal"
-        Me.DataGridViewTextBoxColumn17.Name = "DataGridViewTextBoxColumn17"
-        Me.DataGridViewTextBoxColumn17.Visible = False
-        '
-        'DataGridViewTextBoxColumn18
-        '
-        Me.DataGridViewTextBoxColumn18.DataPropertyName = "ImporteExigible"
-        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight
-        DataGridViewCellStyle14.Format = "n2"
-        Me.DataGridViewTextBoxColumn18.DefaultCellStyle = DataGridViewCellStyle14
-        Me.DataGridViewTextBoxColumn18.HeaderText = "ImporteExigible"
-        Me.DataGridViewTextBoxColumn18.Name = "DataGridViewTextBoxColumn18"
-        Me.DataGridViewTextBoxColumn18.ReadOnly = True
-        '
         'frmEstadoCuentaAvio
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -730,8 +706,6 @@ Partial Class frmEstadoCuentaAvio
         Me.Controls.Add(Me.ButtonReCalc)
         Me.Controls.Add(Me.LBtotal2)
         Me.Controls.Add(Me.DataGridCOPY)
-        Me.Controls.Add(Me.Button3)
-        Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.LBtotal)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.LabelCliente)
@@ -768,8 +742,6 @@ Partial Class frmEstadoCuentaAvio
     Friend WithEvents ClientesTableAdapter As Estado_de_Cuenta.ProductionDataSetTableAdapters.ClientesTableAdapter
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents LBtotal As System.Windows.Forms.Label
-    Friend WithEvents Button2 As System.Windows.Forms.Button
-    Friend WithEvents Button3 As System.Windows.Forms.Button
     Friend WithEvents DataGridCOPY As System.Windows.Forms.DataGridView
     Friend WithEvents LBtotal2 As System.Windows.Forms.Label
     Friend WithEvents DetalleFINAGILBindingSource1 As System.Windows.Forms.BindingSource

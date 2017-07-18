@@ -5,6 +5,8 @@ Public Class frmEstadoCuentaAvio
     Dim FechaQuitaFega As Date = Date.ParseExact("26/09/2016", "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture) '***** SE QUITA FEGA Y GL DEL SEGURO DE VIDA A PARTIR DEL MES DE SEPTIEMBRE, ELISANDER PINEDA #ect 26092015.N
     Dim UltimoCorte As String
     Dim UltimoPAGO As String = "20010101"
+    Dim UltimoPAGO_CON As String = "20010101"
+    Dim UltimoCORTE_CON As String = "20010101"
     Dim UltimoPAGO_GEN As String = "20010101"
     Dim FechaVen As Date
     Dim FecTope As Date
@@ -30,10 +32,8 @@ Public Class frmEstadoCuentaAvio
     Dim PorcFega As Decimal = 0
     Dim DiasMenos As Integer = -3
     Dim TercioDeTasa As Boolean = False
-    'Dim SinMoraHastaPago() As String = {"036710002", "036790002", "036910003", "036910004", "085020011", "085020012", "085160011", "085640007", "085330008", "085690011", "085690012", "086250006", "086260005", "086260006", "086310009", "086310010", "036950004", "085970010", "086310009"}
-    'Dim SinMoraHastaPagoTasamenor() As String = {"086310009", "086250006", "085890010", "085070014"}
-    'Dim SinMoraHastaPago() As String = {"XX", "XX"}
-
+    Dim AHORA As Date
+    Dim HastaVENC As Boolean = False
     Private Sub ButtonCargar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonCargar.Click
         Me.DetalleFINAGILTableAdapter.QuitaNulosFactura()
         Me.DetalleFINAGILTableAdapter.NoFacturado()
@@ -42,7 +42,6 @@ Public Class frmEstadoCuentaAvio
             Me.ClientesTableAdapter.Fill(Me.ProductionDataSet.Clientes, LabelCliente.Text)
             LBtotal.Text = Format(Me.DetalleFINAGILTableAdapter.Total(txtanexo.Text, txtCiclo.Text), "N")
             Me.DetalleFINAGILTableAdapter.UpdateUltimoSaldo(LBtotal.Text, txtanexo.Text, txtCiclo.Text)
-            RespaldarContrato()
             Me.DetalleFINAGILTableAdapter1.FillByAnexo(Me.ProductionDataSet1.DetalleFINAGIL, "", "")
             ButtonReCalc.Enabled = True
             ButtonCargar.Enabled = False
@@ -56,35 +55,6 @@ Public Class frmEstadoCuentaAvio
             End If
 
         End If
-    End Sub
-
-    Sub RespaldarContrato()
-        Dim cad As String = ""
-        Dim Respaldo As New StreamWriter("Anexos.txt", True)
-        Respaldo.WriteLine(Now)
-        For Each r As Estado_de_Cuenta.ProductionDataSet.DetalleFINAGILRow In Me.ProductionDataSet.DetalleFINAGIL.Rows
-            cad = ""
-            For Each col As DataColumn In Me.ProductionDataSet.DetalleFINAGIL.Columns
-                cad = cad & r(col) & vbTab
-            Next
-            Respaldo.WriteLine(cad)
-        Next
-        Respaldo.WriteLine(Now)
-        Respaldo.Close()
-    End Sub
-
-    Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
-        'Recalcular()
-    End Sub
-
-    Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
-        Me.DetalleFINAGILTableAdapter.Update(Me.ProductionDataSet.DetalleFINAGIL)
-        Me.ProductionDataSet.DetalleFINAGIL.AcceptChanges()
-        If UltimoCorte <> Nothing Or UltimoCorte <> "" Then
-            UltimoCorte = DataGridCOPY.Item("DataGridViewTextBoxFechaFinal", DataGridCOPY.Rows.Count - 1).Value
-            Me.DetalleFINAGILTableAdapter.Ultimocorte(UltimoCorte, txtCiclo.Text, txtanexo.Text)
-        End If
-        UltimoCorte = ""
     End Sub
 
     Private Sub ButtonRecalc_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonReCalc.Click
@@ -101,7 +71,23 @@ Public Class frmEstadoCuentaAvio
             End If
             '''TasaSegVid = 0 'para no conbrar seguro de vida
             'Console.WriteLine("recalc2")
-            Recalcular2()
+            FijaTasa(txtanexo.Text, txtCiclo.Text, AHORA.AddDays(DiasMenos))
+            If FechaVen >= AHORA.AddDays(DiasMenos) Then
+                Recalcular2()
+            Else
+                If FechaVen >= CadenaFecha(AHORA.AddDays(DiasMenos).ToString("yyyyMM01")).AddMonths(-1) And FechaVen >= CadenaFecha(UltimoPAGO_CON) Then
+                    Dim diasMEnosAux As Integer = DiasMenos
+                    Dim AhoraAux As Date = AHORA
+                    AHORA = FechaVen
+                    DiasMenos = 0
+                    HastaVENC = True
+                    Recalcular2()
+                    DiasMenos = diasMEnosAux
+                    AHORA = AhoraAux
+                    HastaVENC = False
+                End If
+            End If
+
             'Console.WriteLine("recalc3")
             ButtonReCalc.Enabled = False
             ButtonCargar.Enabled = False
@@ -175,7 +161,7 @@ Public Class frmEstadoCuentaAvio
                                     rr("fega") = 0
                                 End If
 
-                                FijaTasa(r("anexo"), r("ciclo"), fechaINI.AddMonths(-1), r("tasabp"))
+                                FijaTasa(r("anexo"), r("ciclo"), fechaINI.AddMonths(-1))
                                 If FechaVen < fechaINI And Tipar = "C" Then
                                     Tasa = Tasa * 2
                                 ElseIf FechaVen < fechaINI And (Tipar = "H" Or Tipar = "A") Then
@@ -257,7 +243,7 @@ Public Class frmEstadoCuentaAvio
                                     rr("garantia") = 0
                                     rr("fega") = 0
                                 End If
-                                FijaTasa(r("anexo"), r("ciclo"), fechaINI.AddMonths(-1), r("tasabp"))
+                                FijaTasa(r("anexo"), r("ciclo"), fechaINI.AddMonths(-1))
                                 If FechaVen < fechaINI And Tipar = "C" Then
                                     Tasa = Tasa * 2
                                 ElseIf FechaVen < fechaINI And (Tipar = "H" Or Tipar = "A") Then
@@ -331,7 +317,7 @@ Public Class frmEstadoCuentaAvio
                                 rr("fega") = 0
                             End If
 
-                            FijaTasa(r("anexo"), r("ciclo"), fechaINI.AddMonths(-1), r("tasabp"))
+                            FijaTasa(r("anexo"), r("ciclo"), fechaINI.AddMonths(-1))
                             If FechaVen < fechaINI And Tipar = "C" Then
                                 Tasa = Tasa * 2
                             ElseIf FechaVen < fechaINI And (Tipar = "H" Or Tipar = "A") Then
@@ -403,7 +389,7 @@ Public Class frmEstadoCuentaAvio
                             rr("fega") = 0
                         End If
 
-                        FijaTasa(r("anexo"), r("ciclo"), fechaINI.AddMonths(-1), r("tasabp"))
+                        FijaTasa(r("anexo"), r("ciclo"), fechaINI.AddMonths(-1))
                         If FechaVen < fechaINI And Tipar = "C" Then
                             Tasa = Tasa * 2
                         ElseIf FechaVen < fechaINI And (Tipar = "H" Or Tipar = "A") Then
@@ -464,11 +450,17 @@ Public Class frmEstadoCuentaAvio
             Next
             'Console.WriteLine("recalc22")
             If CheckProyectado.Checked = False Then
-                FecTope = CadenaFecha(Now.AddDays(DiasMenos).ToString("yyyyMM01"))
-                GeneraIntereses(UltimoCorte, Consec, r, Saldofin, 0, Now.AddDays(DiasMenos).ToString("yyyyMM01"))
+                If HastaVENC = True Then
+                    FecTope = CadenaFecha(AHORA.AddDays(DiasMenos).ToString("yyyyMMdd"))
+                    GeneraIntereses(UltimoCorte, Consec, r, Saldofin, 0, AHORA.AddDays(DiasMenos).ToString("yyyyMMdd"))
+                Else
+                    FecTope = CadenaFecha(AHORA.AddDays(DiasMenos).ToString("yyyyMM01"))
+                    GeneraIntereses(UltimoCorte, Consec, r, Saldofin, 0, AHORA.AddDays(DiasMenos).ToString("yyyyMM01"))
+                End If
+
             Else
-                FecTope = CadenaFecha(Now.AddMonths(1).ToString("yyyyMM01"))
-                GeneraIntereses(UltimoCorte, Consec, r, Saldofin, 0, Now.AddMonths(1).ToString("yyyyMM01"))
+                FecTope = CadenaFecha(AHORA.AddMonths(1).ToString("yyyyMM01"))
+                GeneraIntereses(UltimoCorte, Consec, r, Saldofin, 0, AHORA.AddMonths(1).ToString("yyyyMM01"))
             End If
         End If
         'Console.WriteLine("recalc23")
@@ -491,16 +483,17 @@ Public Class frmEstadoCuentaAvio
         Return ff
     End Function
 
-    Sub FijaTasa(ByVal a As String, ByVal c As String, ByVal f As Date, ByVal t As Double)
-        Dim x As New Estado_de_Cuenta.ProductionDataSetTableAdapters.AviosTableAdapter
-        Dim w As New Estado_de_Cuenta.ProductionDataSetTableAdapters.AnexosTasaMoraFecORdTableAdapter
+    Sub FijaTasa(ByVal a As String, ByVal c As String, ByVal F As Date)
+        Dim TaAvios As New Estado_de_Cuenta.ProductionDataSetTableAdapters.AviosTableAdapter
+        Dim TaTasaMora As New Estado_de_Cuenta.ProductionDataSetTableAdapters.AnexosTasaMoraFecORdTableAdapter
         Dim y As New Estado_de_Cuenta.ProductionDataSet.AviosDataTable
         Dim Diferencial As Double
-        x.UpdateAplicaGAR()
-        x.FillAnexo(y, a, c)
-        'UltimoPAGO_GEN = x.UltimoPago(a, c)
-        UltimoPAGO_GEN = w.SacaFecha(a, c)
-        If w.TieneTercioDeTasa(a, c, True) > 0 Then
+        TaAvios.UpdateAplicaGAR()
+        TaAvios.FillAnexo(y, a, c)
+        UltimoPAGO_CON = TaAvios.UltimoPago(a, c)
+        UltimoCORTE_CON = TaAvios.UltimaFecha(a, c)
+        UltimoPAGO_GEN = TaTasaMora.SacaFecha(a, c)
+        If TaTasaMora.TieneTercioDeTasa(a, c, True) > 0 Then
             TercioDeTasa = True
         Else
             TercioDeTasa = False
@@ -511,10 +504,10 @@ Public Class frmEstadoCuentaAvio
         Else
             Dim TIIE As New Estado_de_Cuenta.ProductionDataSetTableAdapters.TIIEpromedioTableAdapter
             Diferencial = y.Rows(0).Item(1)
-            Tasa = TIIE.SacaTIIE(f.ToString("yyyyMM")) + Diferencial
+            Tasa = TIIE.SacaTIIE(F.ToString("yyyyMM")) + Diferencial
         End If
         'SOLICITADO POR ELISANDER DEBIDO A PRORROGA, SE SUMA UN PUNTO PORCENTUAL A PARTIR DE ENERO++++++++++++
-        If (a = "070320012" Or a = "070860007" Or a = "070790010" Or a = "070780012" Or a = "070600011" Or a = "071330006") And f >= CDate("01/01/2015") Then
+        If (a = "070320012" Or a = "070860007" Or a = "070790010" Or a = "070780012" Or a = "070600011" Or a = "071330006") And F >= CDate("01/01/2015") Then
             Tasa += 1
         End If
         TasaAUX = Tasa
@@ -531,6 +524,8 @@ Public Class frmEstadoCuentaAvio
 
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         'Try
+
+        AHORA = Now
         arg = Environment.GetCommandLineArgs()
         ButtonReCalc.Enabled = False
         ButtonCargar.Enabled = True
@@ -563,18 +558,6 @@ Public Class frmEstadoCuentaAvio
             arg(2) = ""
             arg(4) = 0
             End
-            ''Dim t As New Estado_de_Cuenta.ProductionDataSetTableAdapters.ZTempWEBTableAdapter
-            ''Dim tt As New Estado_de_Cuenta.ProductionDataSet.ZTempWEBDataTable
-            ''t.Fill(tt)
-            ''If tt.Rows.Count > 1 Then
-            ''    txtanexo.Text = tt.Rows(0).Item("Anexo")
-            ''    txtCiclo.Text = tt.Rows(0).Item("ciclo")
-            ''    CheckProyectado.Checked = tt.Rows(0).Item("proyectado")
-            ''    ButtonCargar_Click(Nothing, Nothing)
-            ''    ButtonRecalc_Click(Nothing, Nothing)
-            ''    ButtonSave_Click(Nothing, Nothing)
-            ''End If
-            ''End
         End If
         txtanexo.Text = arg(1)
         txtCiclo.Text = arg(2)
@@ -584,6 +567,9 @@ Public Class frmEstadoCuentaAvio
         '    Console.WriteLine(ex.Message)
         '    End
         'End Try
+        'DiasMenos = -190
+        'AHORA = Now
+        'MessageBox.Show(AHORA.AddDays(DiasMenos).ToString("dd/MM/yyyy"))
     End Sub
 
     Sub ProcesaAvio()
@@ -591,7 +577,7 @@ Public Class frmEstadoCuentaAvio
         Dim contador As Integer = 0
         Dim ww As New Estado_de_Cuenta.ProductionDataSetTableAdapters.SaldosAvioTableAdapter
         Dim TT As New Estado_de_Cuenta.ProductionDataSet.SaldosAvioDataTable
-        ww.TerminaContratos(Date.Now.ToString("yyyyMMdd"))
+        ww.TerminaContratos(AHORA.ToString("yyyyMMdd"))
         ww.Fill(TT)
         For Each r As Estado_de_Cuenta.ProductionDataSet.SaldosAvioRow In TT.Rows
             txtanexo.Text = r.Anexo
@@ -603,7 +589,6 @@ Public Class frmEstadoCuentaAvio
                 ww.ActivaContrato("A", r.Anexo, r.Ciclo)
             End If
             contador += 1
-
         Next
     End Sub
 
@@ -630,7 +615,7 @@ Public Class frmEstadoCuentaAvio
             Respuesta = InputBox("Dame contraseña", "Contraseña de Cambio")
         End If
 
-        If (Respuesta = "SI" Or arg(3) = "FIN") And Val(LBtotal.Text) > 0 Then
+        If (Respuesta = "SI" Or arg(3) = "FIN") And Val(LBtotal.Text) > 0 And Me.ProductionDataSet1.DetalleFINAGIL.Rows.Count > 0 Then
             Dim r As Estado_de_Cuenta.ProductionDataSet.DetalleFINAGILRow
             Me.DetalleFINAGILTableAdapter.DeleteAnexo(txtanexo.Text, txtCiclo.Text)
             Me.ProductionDataSet.DetalleFINAGIL.Clear()
@@ -710,7 +695,7 @@ Public Class frmEstadoCuentaAvio
                 FechaAnt = aux.AddMonths(-1)
             End If
 
-            FijaTasa(r("anexo"), r("ciclo"), FechaAnt, r("tasabp"))
+            FijaTasa(r("anexo"), r("ciclo"), FechaAnt)
 
             If FechaVen < aux And Tipar = "C" And SinMoratorios = "N" Then
                 Tasa = Tasa * 2
@@ -865,8 +850,6 @@ Public Class frmEstadoCuentaAvio
                 End If
 
             Else
-                'If SaldoFin > 0 And CadenaFecha(f) < FechaVen Then
-                'If SaldoFin > 0 And CadenaFecha(f) <> FecTope.AddDays(-1) Then
                 If SaldoFin > 0 Then
                     GeneraIntereses(f, Consec, r, SaldoFin, 1, H)
                 End If
@@ -904,7 +887,7 @@ Public Class frmEstadoCuentaAvio
 
             End If
             'Console.WriteLine("fijatasa1")
-            FijaTasa(r("anexo"), r("ciclo"), FechaAnt, r("tasabp"))
+            FijaTasa(r("anexo"), r("ciclo"), FechaAnt)
             'Console.WriteLine("fijatasa2")
 
             If fec < FechaVen And FechaVen < aux And fec.Month = FechaVen.Month And aux.Month = FechaVen.Month Then
@@ -1064,7 +1047,7 @@ Public Class frmEstadoCuentaAvio
                     rri("fechainicial") = fec.ToString("yyyyMMdd")
                     rri("fechafinal") = aux.ToString("yyyyMMdd")
                     rri("dias") = dias
-                    FijaTasa(r("anexo"), r("ciclo"), FechaAnt, r("tasabp"))
+                    FijaTasa(r("anexo"), r("ciclo"), FechaAnt)
                     If FechaVen < fec And Tipar = "C" Then
                         Tasa = Tasa * 2
                     ElseIf FechaVen < fec And (Tipar = "H" Or Tipar = "A") Then
@@ -1250,7 +1233,5 @@ Public Class frmEstadoCuentaAvio
         Mensage.Priority = MailPriority.High
         Cliente.Send(Mensage)
     End Sub
-
-
 
 End Class
