@@ -254,7 +254,18 @@ WHERE        (Anexo = @Anexo) AND (Ciclo = @Ciclo)</CommandText>
               <Mapping SourceColumn="PorcFega" DataSetColumn="PorcFega" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="server-raid.Production.dbo" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UltimaFecha" Modifier="Public" Name="UltimaFecha" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="UltimaFecha">
+              <DbSource ConnectionRef="server-raid.Production.dbo" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="FechaAplicacion" Modifier="Public" Name="FechaAplicacion" QueryType="Scalar" ScalarCallRetval="System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="FechaAplicacion">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        MAX(Fecha) AS Fecha
+FROM            CONT_FechasAplicacion
+WHERE        (Estatus = N'Vigente')
+ORDER BY MAX(Fecha) DESC</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="server-raid.Production.dbo" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UltimaFecha" Modifier="Public" Name="UltimaFecha" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="UltimaFecha">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        ISNULL(MAX(FechaFinal), '20010101') AS Fecha
@@ -267,7 +278,7 @@ WHERE        (Anexo = @Anexo) AND (Ciclo = @Ciclo) </CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="server-raid.Production.dbo" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UltimoPago" Modifier="Public" Name="UltimoPago" QueryType="Scalar" ScalarCallRetval="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="UltimoPago">
+              <DbSource ConnectionRef="server-raid.Production.dbo" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UltimoPago" Modifier="Public" Name="UltimoPago" QueryType="Scalar" ScalarCallRetval="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="UltimoPago">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        ISNULL(MAX(FechaFinal), '20010101') AS Fecha
@@ -280,7 +291,7 @@ WHERE        (Anexo = @Anexo) AND (Ciclo = @Ciclo) AND (Concepto = N'PAGO')</Com
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="server-raid.Production.dbo" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="UpdateAplicaGAR" Modifier="Public" Name="UpdateAplicaGAR" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="UpdateAplicaGAR">
+              <DbSource ConnectionRef="server-raid.Production.dbo" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="UpdateAplicaGAR" Modifier="Public" Name="UpdateAplicaGAR" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="UpdateAplicaGAR">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE       Avios
@@ -1056,7 +1067,7 @@ WHERE        (Anexo = @Anexo) AND (Ciclo = @Ciclo) AND (TercioDeTasa = @TercioDe
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="ZTempWEB" msprop:Generator_TableClassName="ZTempWEBDataTable" msprop:Generator_TableVarName="tableZTempWEB" msprop:Generator_TablePropName="ZTempWEB" msprop:Generator_RowDeletingName="ZTempWEBRowDeleting" msprop:Generator_RowChangingName="ZTempWEBRowChanging" msprop:Generator_RowEvHandlerName="ZTempWEBRowChangeEventHandler" msprop:Generator_RowDeletedName="ZTempWEBRowDeleted" msprop:Generator_UserTableName="ZTempWEB" msprop:Generator_RowChangedName="ZTempWEBRowChanged" msprop:Generator_RowEvArgName="ZTempWEBRowChangeEvent" msprop:Generator_RowClassName="ZTempWEBRow">
+        <xs:element name="ZTempWEB" msprop:Generator_TableClassName="ZTempWEBDataTable" msprop:Generator_TableVarName="tableZTempWEB" msprop:Generator_RowChangedName="ZTempWEBRowChanged" msprop:Generator_TablePropName="ZTempWEB" msprop:Generator_RowDeletingName="ZTempWEBRowDeleting" msprop:Generator_RowChangingName="ZTempWEBRowChanging" msprop:Generator_RowEvHandlerName="ZTempWEBRowChangeEventHandler" msprop:Generator_RowDeletedName="ZTempWEBRowDeleted" msprop:Generator_RowClassName="ZTempWEBRow" msprop:Generator_UserTableName="ZTempWEB" msprop:Generator_RowEvArgName="ZTempWEBRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Anexo" msprop:Generator_ColumnVarNameInTable="columnAnexo" msprop:Generator_ColumnPropNameInRow="Anexo" msprop:Generator_ColumnPropNameInTable="AnexoColumn" msprop:Generator_UserColumnName="Anexo">
@@ -1083,7 +1094,7 @@ WHERE        (Anexo = @Anexo) AND (Ciclo = @Ciclo) AND (TercioDeTasa = @TercioDe
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Clientes" msprop:Generator_TableClassName="ClientesDataTable" msprop:Generator_TableVarName="tableClientes" msprop:Generator_TablePropName="Clientes" msprop:Generator_RowDeletingName="ClientesRowDeleting" msprop:Generator_RowChangingName="ClientesRowChanging" msprop:Generator_RowEvHandlerName="ClientesRowChangeEventHandler" msprop:Generator_RowDeletedName="ClientesRowDeleted" msprop:Generator_UserTableName="Clientes" msprop:Generator_RowChangedName="ClientesRowChanged" msprop:Generator_RowEvArgName="ClientesRowChangeEvent" msprop:Generator_RowClassName="ClientesRow">
+        <xs:element name="Clientes" msprop:Generator_TableClassName="ClientesDataTable" msprop:Generator_TableVarName="tableClientes" msprop:Generator_RowChangedName="ClientesRowChanged" msprop:Generator_TablePropName="Clientes" msprop:Generator_RowDeletingName="ClientesRowDeleting" msprop:Generator_RowChangingName="ClientesRowChanging" msprop:Generator_RowEvHandlerName="ClientesRowChangeEventHandler" msprop:Generator_RowDeletedName="ClientesRowDeleted" msprop:Generator_RowClassName="ClientesRow" msprop:Generator_UserTableName="Clientes" msprop:Generator_RowEvArgName="ClientesRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Agrupa" msprop:Generator_ColumnVarNameInTable="columnAgrupa" msprop:Generator_ColumnPropNameInRow="Agrupa" msprop:Generator_ColumnPropNameInTable="AgrupaColumn" msprop:Generator_UserColumnName="Agrupa">
@@ -1608,7 +1619,7 @@ WHERE        (Anexo = @Anexo) AND (Ciclo = @Ciclo) AND (TercioDeTasa = @TercioDe
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="AnexosTasaMoraFecORd" msprop:Generator_TableClassName="AnexosTasaMoraFecORdDataTable" msprop:Generator_TableVarName="tableAnexosTasaMoraFecORd" msprop:Generator_TablePropName="AnexosTasaMoraFecORd" msprop:Generator_RowDeletingName="AnexosTasaMoraFecORdRowDeleting" msprop:Generator_RowChangingName="AnexosTasaMoraFecORdRowChanging" msprop:Generator_RowEvHandlerName="AnexosTasaMoraFecORdRowChangeEventHandler" msprop:Generator_RowDeletedName="AnexosTasaMoraFecORdRowDeleted" msprop:Generator_UserTableName="AnexosTasaMoraFecORd" msprop:Generator_RowChangedName="AnexosTasaMoraFecORdRowChanged" msprop:Generator_RowEvArgName="AnexosTasaMoraFecORdRowChangeEvent" msprop:Generator_RowClassName="AnexosTasaMoraFecORdRow">
+        <xs:element name="AnexosTasaMoraFecORd" msprop:Generator_TableClassName="AnexosTasaMoraFecORdDataTable" msprop:Generator_TableVarName="tableAnexosTasaMoraFecORd" msprop:Generator_RowChangedName="AnexosTasaMoraFecORdRowChanged" msprop:Generator_TablePropName="AnexosTasaMoraFecORd" msprop:Generator_RowDeletingName="AnexosTasaMoraFecORdRowDeleting" msprop:Generator_RowChangingName="AnexosTasaMoraFecORdRowChanging" msprop:Generator_RowEvHandlerName="AnexosTasaMoraFecORdRowChangeEventHandler" msprop:Generator_RowDeletedName="AnexosTasaMoraFecORdRowDeleted" msprop:Generator_RowClassName="AnexosTasaMoraFecORdRow" msprop:Generator_UserTableName="AnexosTasaMoraFecORd" msprop:Generator_RowEvArgName="AnexosTasaMoraFecORdRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Anexo" msprop:Generator_ColumnVarNameInTable="columnAnexo" msprop:Generator_ColumnPropNameInRow="Anexo" msprop:Generator_ColumnPropNameInTable="AnexoColumn" msprop:Generator_UserColumnName="Anexo">

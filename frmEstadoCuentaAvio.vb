@@ -34,6 +34,7 @@ Public Class frmEstadoCuentaAvio
     Dim TercioDeTasa As Boolean = False
     Dim AHORA As Date
     Dim HastaVENC As Boolean = False
+    Dim FECHA_APLICACION As Date
     Private Sub ButtonCargar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonCargar.Click
         Me.DetalleFINAGILTableAdapter.QuitaNulosFactura()
         Me.DetalleFINAGILTableAdapter.NoFacturado()
@@ -524,7 +525,8 @@ Public Class frmEstadoCuentaAvio
 
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         'Try
-
+        Dim tx As New ProductionDataSetTableAdapters.AviosTableAdapter
+        FECHA_APLICACION = tx.FechaAplicacion()
         AHORA = Now
         arg = Environment.GetCommandLineArgs()
         ButtonReCalc.Enabled = False
@@ -534,8 +536,11 @@ Public Class frmEstadoCuentaAvio
             If arg.Length >= 6 Then
                 Usuario = arg(5)
                 If arg.Length = 7 Then DiasMenos = arg(6)
+                If Usuario = "lhernandez" Then
+                    AHORA = FECHA_APLICACION
+                End If
             End If
-            If arg(3) = "FIN" Then
+                If arg(3) = "FIN" Then
                 ''Console.WriteLine("1")
                 txtanexo.Text = arg(1)
                 txtCiclo.Text = arg(2)
