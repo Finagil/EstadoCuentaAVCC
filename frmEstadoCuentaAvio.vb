@@ -73,20 +73,39 @@ Public Class frmEstadoCuentaAvio
             '''TasaSegVid = 0 'para no conbrar seguro de vida
             'Console.WriteLine("recalc2")
             FijaTasa(txtanexo.Text, txtCiclo.Text, AHORA.AddDays(DiasMenos))
-            If FechaVen >= AHORA.AddDays(DiasMenos) Then
+            If FechaVen >= AHORA.AddDays(DiasMenos) And CheckProyectado.Checked = False Then
                 Recalcular2()
             Else
-                If FechaVen >= CadenaFecha(AHORA.AddDays(DiasMenos).ToString("yyyyMM01")).AddMonths(-1) And FechaVen >= CadenaFecha(UltimoPAGO_CON) Then
-                    Dim diasMEnosAux As Integer = DiasMenos
-                    Dim AhoraAux As Date = AHORA
-                    AHORA = FechaVen
-                    DiasMenos = 0
-                    HastaVENC = True
-                    Recalcular2()
-                    DiasMenos = diasMEnosAux
-                    AHORA = AhoraAux
-                    HastaVENC = False
+                If CheckProyectado.Checked = False Then
+                    If FechaVen >= CadenaFecha(AHORA.AddDays(DiasMenos).ToString("yyyyMM01")).AddMonths(-1) And FechaVen >= CadenaFecha(UltimoPAGO_CON) Then
+                        Dim diasMEnosAux As Integer = DiasMenos
+                        Dim AhoraAux As Date = AHORA
+                        AHORA = FechaVen
+                        DiasMenos = 0
+                        HastaVENC = True
+                        Recalcular2()
+                        DiasMenos = diasMEnosAux
+                        AHORA = AhoraAux
+                        HastaVENC = False
+                    End If
+                Else
+                    If FechaVen <= AHORA And FechaVen >= CadenaFecha(UltimoPAGO_CON) Then
+                        Dim diasMEnosAux As Integer = DiasMenos
+                        Dim AhoraAux As Date = AHORA
+                        AHORA = FechaVen
+                        DiasMenos = 0
+                        HastaVENC = True
+                        Recalcular2()
+                        DiasMenos = diasMEnosAux
+                        AHORA = AhoraAux
+                        HastaVENC = False
+                    Else
+                        CheckProyectado.Checked = False
+                        Recalcular2()
+                    End If
+
                 End If
+
             End If
 
             'Console.WriteLine("recalc3")
@@ -460,8 +479,14 @@ Public Class frmEstadoCuentaAvio
                 End If
 
             Else
-                FecTope = CadenaFecha(AHORA.AddMonths(1).ToString("yyyyMM01"))
-                GeneraIntereses(UltimoCorte, Consec, r, Saldofin, 0, AHORA.AddMonths(1).ToString("yyyyMM01"))
+                If HastaVENC = True Then
+                    FecTope = CadenaFecha(AHORA.AddDays(DiasMenos).ToString("yyyyMMdd"))
+                    GeneraIntereses(UltimoCorte, Consec, r, Saldofin, 0, AHORA.AddDays(DiasMenos).ToString("yyyyMMdd"))
+                Else
+                    FecTope = CadenaFecha(AHORA.AddMonths(1).ToString("yyyyMM01"))
+                    GeneraIntereses(UltimoCorte, Consec, r, Saldofin, 0, AHORA.AddMonths(1).ToString("yyyyMM01"))
+                End If
+
             End If
         End If
         'Console.WriteLine("recalc23")
@@ -535,16 +560,21 @@ Public Class frmEstadoCuentaAvio
         If arg.Length > 1 Then
             If arg.Length >= 6 Then
                 Usuario = arg(5)
-                If arg.Length = 7 Then DiasMenos = arg(6)
+                If arg.Length >= 7 Then DiasMenos = arg(6)
                 If Usuario = "lhernandez" Then
                     AHORA = FECHA_APLICACION
                 End If
             End If
-                If arg(3) = "FIN" Then
+            If arg(3) = "FIN" Then
                 ''Console.WriteLine("1")
                 txtanexo.Text = arg(1)
                 txtCiclo.Text = arg(2)
                 CheckProyectado.Checked = arg(4)
+                If CheckProyectado.Checked = True Then
+                    If arg.Length >= 8 Then
+                        AHORA = CadenaFecha(arg(7))
+                    End If
+                End If
                 'Console.WriteLine("carga")
                 ButtonCargar_Click(Nothing, Nothing)
                 'Console.WriteLine("recalc")
@@ -568,6 +598,12 @@ Public Class frmEstadoCuentaAvio
         txtCiclo.Text = arg(2)
 
         CheckProyectado.Checked = arg(4)
+        If CheckProyectado.Checked = True Then
+            If arg.Length >= 8 Then
+                AHORA = CadenaFecha(arg(7))
+            End If
+        End If
+
         'Catch ex As Exception
         '    Console.WriteLine(ex.Message)
         '    End
@@ -575,6 +611,7 @@ Public Class frmEstadoCuentaAvio
         'DiasMenos = -190
         'AHORA = Now
         'MessageBox.Show(AHORA.AddDays(DiasMenos).ToString("dd/MM/yyyy"))
+        Label3.Text = AHORA.ToShortDateString
     End Sub
 
     Sub ProcesaAvio()

@@ -107,6 +107,7 @@ Partial Class frmEstadoCuentaAvio
         Me.DetalleFINAGILTableAdapter1 = New Estado_de_Cuenta.ProductionDataSetTableAdapters.DetalleFINAGILTableAdapter()
         Me.ClientesTableAdapter1 = New Estado_de_Cuenta.ProductionDataSetTableAdapters.ClientesTableAdapter()
         Me.LabelTipo = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
         CType(Me.DataGridORG, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DetalleFINAGILBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ProductionDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -693,11 +694,22 @@ Partial Class frmEstadoCuentaAvio
         Me.LabelTipo.TabIndex = 18
         Me.LabelTipo.Text = "Nombre:"
         '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Location = New System.Drawing.Point(12, 309)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(50, 13)
+        Me.Label3.TabIndex = 19
+        Me.Label3.Text = "Cliente:"
+        '
         'frmEstadoCuentaAvio
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1289, 587)
+        Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.LabelTipo)
         Me.Controls.Add(Me.CheckProyectado)
         Me.Controls.Add(Me.ButtonCancelar)
@@ -798,5 +810,5 @@ Partial Class frmEstadoCuentaAvio
     Friend WithEvents DataGridViewTextBoxColumn6 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn17 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn18 As System.Windows.Forms.DataGridViewTextBoxColumn
-
+    Friend WithEvents Label3 As Label
 End Class
