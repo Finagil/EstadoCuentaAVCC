@@ -73,7 +73,7 @@ Public Class frmEstadoCuentaAvio
             '''TasaSegVid = 0 'para no conbrar seguro de vida
             'Console.WriteLine("recalc2")
             FijaTasa(txtanexo.Text, txtCiclo.Text, AHORA.AddDays(DiasMenos))
-            If FechaVen >= AHORA.AddDays(DiasMenos) And CheckProyectado.Checked = False Then
+            If FechaVen > AHORA.AddDays(DiasMenos) And CheckProyectado.Checked = False Then
                 Recalcular2()
             Else
                 If CheckProyectado.Checked = False Then
