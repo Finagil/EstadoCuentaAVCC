@@ -1421,6 +1421,8 @@ Partial Public Class ProductionDataSet
         
         Private columnPorcFega As Global.System.Data.DataColumn
         
+        Private columnAplicaFega As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
@@ -1553,6 +1555,14 @@ Partial Public Class ProductionDataSet
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property AplicaFegaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnAplicaFega
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -1589,9 +1599,9 @@ Partial Public Class ProductionDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function AddAviosRow(ByVal Tipta As String, ByVal DiferencialFINAGIL As Decimal, ByVal Fondeo As String, ByVal Tipar As String, ByVal FechaTerminacion As String, ByVal Tasas As Decimal, ByVal SeguroVida As Decimal, ByVal AplicaGarantiaLIQ As String, ByVal SinMoratorios As String, ByVal FechaAutorizacion As String, ByVal InteresMensual As String, ByVal PorcFega As Decimal) As AviosRow
+        Public Overloads Function AddAviosRow(ByVal Tipta As String, ByVal DiferencialFINAGIL As Decimal, ByVal Fondeo As String, ByVal Tipar As String, ByVal FechaTerminacion As String, ByVal Tasas As Decimal, ByVal SeguroVida As Decimal, ByVal AplicaGarantiaLIQ As String, ByVal SinMoratorios As String, ByVal FechaAutorizacion As String, ByVal InteresMensual As String, ByVal PorcFega As Decimal, ByVal AplicaFega As Boolean) As AviosRow
             Dim rowAviosRow As AviosRow = CType(Me.NewRow,AviosRow)
-            Dim columnValuesArray() As Object = New Object() {Tipta, DiferencialFINAGIL, Fondeo, Tipar, FechaTerminacion, Tasas, SeguroVida, AplicaGarantiaLIQ, SinMoratorios, FechaAutorizacion, InteresMensual, PorcFega}
+            Dim columnValuesArray() As Object = New Object() {Tipta, DiferencialFINAGIL, Fondeo, Tipar, FechaTerminacion, Tasas, SeguroVida, AplicaGarantiaLIQ, SinMoratorios, FechaAutorizacion, InteresMensual, PorcFega, AplicaFega}
             rowAviosRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowAviosRow)
             Return rowAviosRow
@@ -1632,6 +1642,7 @@ Partial Public Class ProductionDataSet
             Me.columnFechaAutorizacion = MyBase.Columns("FechaAutorizacion")
             Me.columnInteresMensual = MyBase.Columns("InteresMensual")
             Me.columnPorcFega = MyBase.Columns("PorcFega")
+            Me.columnAplicaFega = MyBase.Columns("AplicaFega")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1661,6 +1672,8 @@ Partial Public Class ProductionDataSet
             MyBase.Columns.Add(Me.columnInteresMensual)
             Me.columnPorcFega = New Global.System.Data.DataColumn("PorcFega", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnPorcFega)
+            Me.columnAplicaFega = New Global.System.Data.DataColumn("AplicaFega", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnAplicaFega)
             Me.columnTipta.AllowDBNull = false
             Me.columnTipta.MaxLength = 1
             Me.columnDiferencialFINAGIL.AllowDBNull = false
@@ -5663,6 +5676,21 @@ Partial Public Class ProductionDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property AplicaFega() As Boolean
+            Get
+                Try 
+                    Return CType(Me(Me.tableAvios.AplicaFegaColumn),Boolean)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'AplicaFega' de la tabla 'Avios' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableAvios.AplicaFegaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsSeguroVidaNull() As Boolean
             Return Me.IsNull(Me.tableAvios.SeguroVidaColumn)
         End Function
@@ -5719,6 +5747,18 @@ Partial Public Class ProductionDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetPorcFegaNull()
             Me(Me.tableAvios.PorcFegaColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsAplicaFegaNull() As Boolean
+            Return Me.IsNull(Me.tableAvios.AplicaFegaColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetAplicaFegaNull()
+            Me(Me.tableAvios.AplicaFegaColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -8643,6 +8683,7 @@ Namespace ProductionDataSetTableAdapters
             tableMapping.ColumnMappings.Add("FechaAutorizacion", "FechaAutorizacion")
             tableMapping.ColumnMappings.Add("InteresMensual", "InteresMensual")
             tableMapping.ColumnMappings.Add("PorcFega", "PorcFega")
+            tableMapping.ColumnMappings.Add("AplicaFega", "AplicaFega")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -8662,8 +8703,8 @@ Namespace ProductionDataSetTableAdapters
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        Tipta, DiferencialFINAGIL, Fondeo, Tipar, FechaTerminacion, Tasas, "& _ 
                 "SeguroVida, AplicaGarantiaLIQ, SinMoratorios, FechaAutorizacion, InteresMensual,"& _ 
-                " PorcFega"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Avios"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Anexo = @Anexo) AND (Ciclo = @Ci"& _ 
-                "clo)"
+                " PorcFega, AplicaFega"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Avios"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Anexo = @Anexo) AND "& _ 
+                "(Ciclo = @Ciclo)"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ciclo", Global.System.Data.SqlDbType.NChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))

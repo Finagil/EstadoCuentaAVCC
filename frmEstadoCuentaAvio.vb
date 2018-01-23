@@ -35,6 +35,7 @@ Public Class frmEstadoCuentaAvio
     Dim AHORA As Date
     Dim HastaVENC As Boolean = False
     Dim FECHA_APLICACION As Date
+    Dim AplicaFega As Boolean
     Private Sub ButtonCargar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonCargar.Click
         Me.DetalleFINAGILTableAdapter.QuitaNulosFactura()
         Me.DetalleFINAGILTableAdapter.NoFacturado()
@@ -189,7 +190,6 @@ Public Class frmEstadoCuentaAvio
                                 End If
 
                                 rr("tasabp") = Tasa
-
                                 If Tipar = "C" And Fondeo = "03" And con <> "PAGO" And Mid(con, 1, 2) <> "NC" Then
                                     If FechaAutorizacion >= "20160101" Then
                                         rr("fega") = r("importe") * 0.0174
@@ -209,11 +209,11 @@ Public Class frmEstadoCuentaAvio
                                     rr("garantia") = 0
                                 End If
                                 If r("Anexo") = "030140003" And r("ciclo") = "01" And Consec = 1 Then
-                                    rr("fega") = 58000
-                                End If
-                                If r("Anexo") = "030140003" And r("ciclo") = "01" And Consec = 19 Then
-                                    rr("fega") = 14210
-                                End If
+                                        rr("fega") = 58000
+                                    End If
+                                    If r("Anexo") = "030140003" And r("ciclo") = "01" And Consec = 19 Then
+                                        rr("fega") = 14210
+                                    End If
                                 If Tipar = "H" And Fondeo = "03" And con <> "PAGO" And con <> "BONIFICACIÓN GARANTÍA LÍQUIDA" And Mid(con, 1, 2) <> "NC" Then
                                     If FechaAutorizacion >= "20160101" Then
                                         rr("fega") = r("importe") * 0.0174
@@ -230,6 +230,11 @@ Public Class frmEstadoCuentaAvio
                                         rr("garantia") = 0
                                     End If
                                 End If
+                                If AplicaFega = False Then
+                                    rr("garantia") = 0
+                                End If
+
+
 
                                 Saldofin = rr("importe") + rr("fega") + rr("garantia") + rr("intereses") + Saldoini
                                 rr("SALDOFinal") = Saldofin
@@ -310,6 +315,9 @@ Public Class frmEstadoCuentaAvio
                                     If UCase(AplicaGarantiaLIQ) = "NO" Then
                                         rr("garantia") = 0
                                     End If
+                                End If
+                                If AplicaFega = False Then
+                                    rr("garantia") = 0
                                 End If
 
                                 Saldofin = rr("importe") + rr("fega") + rr("garantia") + rr("intereses") + Saldoini
@@ -546,6 +554,7 @@ Public Class frmEstadoCuentaAvio
         SinMoratorios = y.Rows(0).Item("SinMoratorios")
         InteresMensual = y.Rows(0).Item("InteresMensual")
         PorcFega = y.Rows(0).Item("PorcFega")
+        AplicaFega = y.Rows(0).Item("AplicaFega")
     End Sub
 
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
