@@ -208,12 +208,11 @@ Public Class frmEstadoCuentaAvio
                                     End If
                                     rr("garantia") = 0
                                 End If
-                                If r("Anexo") = "030140003" And r("ciclo") = "01" And Consec = 1 Then
-                                        rr("fega") = 58000
-                                    End If
-                                    If r("Anexo") = "030140003" And r("ciclo") = "01" And Consec = 19 Then
-                                        rr("fega") = 14210
-                                    End If
+                                If r("Anexo") = "030140003" And r("ciclo") = "01" And Consec = 1 Then rr("fega") = 58000
+                                If r("Anexo") = "030140003" And r("ciclo") = "01" And Consec = 19 Then rr("fega") = 14210
+                                If r("Anexo") = "043980001" And r("ciclo") = "01" And Consec = 1 Then rr("fega") = 454.14
+                                If r("Anexo") = "043980001" And r("ciclo") = "01" And Consec = 3 Then rr("fega") = 25360.91
+
                                 If Tipar = "H" And Fondeo = "03" And con <> "PAGO" And con <> "BONIFICACIÓN GARANTÍA LÍQUIDA" And Mid(con, 1, 2) <> "NC" Then
                                     If FechaAutorizacion >= "20160101" Then
                                         rr("fega") = r("importe") * 0.0174
@@ -293,12 +292,10 @@ Public Class frmEstadoCuentaAvio
                                     End If
                                     rr("garantia") = 0
                                 End If
-                                If r("Anexo") = "030140003" And r("ciclo") = "01" And Consec = 1 Then
-                                    rr("fega") = 58000
-                                End If
-                                If r("Anexo") = "030140003" And r("ciclo") = "01" And Consec = 19 Then
-                                    rr("fega") = 14210
-                                End If
+                                If r("Anexo") = "030140003" And r("ciclo") = "01" And Consec = 1 Then rr("fega") = 58000
+                                If r("Anexo") = "030140003" And r("ciclo") = "01" And Consec = 19 Then rr("fega") = 14210
+                                If r("Anexo") = "043980001" And r("ciclo") = "01" And Consec = 1 Then rr("fega") = 454.14
+                                If r("Anexo") = "043980001" And r("ciclo") = "01" And Consec = 3 Then rr("fega") = 25360.91
                                 If Tipar = "H" And Fondeo = "03" And con <> "PAGO" And con <> "BONIFICACIÓN GARANTÍA LÍQUIDA" And Mid(con, 1, 2) <> "NC" Then
                                     If FechaAutorizacion >= "20160101" Then
                                         rr("fega") = r("importe") * 0.0174
@@ -370,12 +367,10 @@ Public Class frmEstadoCuentaAvio
                                 End If
                                 rr("garantia") = 0
                             End If
-                            If r("Anexo") = "030140003" And r("ciclo") = "01" And Consec = 1 Then
-                                rr("fega") = 58000
-                            End If
-                            If r("Anexo") = "030140003" And r("ciclo") = "01" And Consec = 19 Then
-                                rr("fega") = 14210
-                            End If
+                            If r("Anexo") = "030140003" And r("ciclo") = "01" And Consec = 1 Then rr("fega") = 58000
+                            If r("Anexo") = "030140003" And r("ciclo") = "01" And Consec = 19 Then rr("fega") = 14210
+                            If r("Anexo") = "043980001" And r("ciclo") = "01" And Consec = 1 Then rr("fega") = 454.14
+                            If r("Anexo") = "043980001" And r("ciclo") = "01" And Consec = 3 Then rr("fega") = 25360.91
                             If Tipar = "H" And Fondeo = "03" And con <> "PAGO" And con <> "BONIFICACIÓN GARANTÍA LÍQUIDA" And Mid(con, 1, 2) <> "NC" Then
                                 If FechaAutorizacion >= "20160101" Then
                                     rr("fega") = r("importe") * 0.0174
@@ -442,12 +437,10 @@ Public Class frmEstadoCuentaAvio
                             End If
                             rr("garantia") = 0
                         End If
-                        If r("Anexo") = "030140003" And r("ciclo") = "01" And Consec = 1 Then
-                            rr("fega") = 58000
-                        End If
-                        If r("Anexo") = "030140003" And r("ciclo") = "01" And Consec = 19 Then
-                            rr("fega") = 14210
-                        End If
+                        If r("Anexo") = "030140003" And r("ciclo") = "01" And Consec = 1 Then rr("fega") = 58000
+                        If r("Anexo") = "030140003" And r("ciclo") = "01" And Consec = 19 Then rr("fega") = 14210
+                        If r("Anexo") = "043980001" And r("ciclo") = "01" And Consec = 1 Then rr("fega") = 454.14
+                        If r("Anexo") = "043980001" And r("ciclo") = "01" And Consec = 3 Then rr("fega") = 25360.91
                         If Tipar = "H" And Fondeo = "03" And con <> "PAGO" And con <> "BONIFICACIÓN GARANTÍA LÍQUIDA" And Mid(con, 1, 2) <> "NC" Then
                             If FechaAutorizacion >= "20160101" Then
                                 rr("fega") = r("importe") * 0.0174
