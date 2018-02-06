@@ -228,7 +228,7 @@ FROM            Vw_TIIEpromedio</CommandText>
               <DbSource ConnectionRef="server-raid.Production.dbo" DbObjectName="Production.dbo.Avios" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillAnexo" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetDataAnexo" GeneratorSourceName="FillAnexo" GetMethodModifier="Public" GetMethodName="GetDataAnexo" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetDataAnexo" UserSourceName="FillAnexo">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        Tipta, DiferencialFINAGIL, Fondeo, Tipar, FechaTerminacion, Tasas, SeguroVida, AplicaGarantiaLIQ, SinMoratorios, FechaAutorizacion, InteresMensual, PorcFega, AplicaFega
+                    <CommandText>SELECT        Tipta, DiferencialFINAGIL, Fondeo, Tipar, FechaTerminacion, Tasas, SeguroVida, AplicaGarantiaLIQ, SinMoratorios, FechaAutorizacion, InteresMensual, PorcFega, AplicaFega, FegaFlat
 FROM            Avios
 WHERE        (Anexo = @Anexo) AND (Ciclo = @Ciclo)</CommandText>
                     <Parameters>
@@ -253,6 +253,7 @@ WHERE        (Anexo = @Anexo) AND (Ciclo = @Ciclo)</CommandText>
               <Mapping SourceColumn="InteresMensual" DataSetColumn="InteresMensual" />
               <Mapping SourceColumn="PorcFega" DataSetColumn="PorcFega" />
               <Mapping SourceColumn="AplicaFega" DataSetColumn="AplicaFega" />
+              <Mapping SourceColumn="FegaFlat" DataSetColumn="FegaFlat" />
             </Mappings>
             <Sources>
               <DbSource ConnectionRef="server-raid.Production.dbo" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="FechaAplicacion" Modifier="Public" Name="FechaAplicacion" QueryType="Scalar" ScalarCallRetval="System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FechaAplicacion">
@@ -932,6 +933,7 @@ WHERE        (Anexo = @Anexo) AND (Ciclo = @Ciclo) AND (TercioDeTasa = @TercioDe
               </xs:element>
               <xs:element name="PorcFega" msprop:Generator_ColumnVarNameInTable="columnPorcFega" msprop:Generator_ColumnPropNameInRow="PorcFega" msprop:Generator_ColumnPropNameInTable="PorcFegaColumn" msprop:Generator_UserColumnName="PorcFega" type="xs:decimal" minOccurs="0" />
               <xs:element name="AplicaFega" msprop:Generator_ColumnVarNameInTable="columnAplicaFega" msprop:Generator_ColumnPropNameInRow="AplicaFega" msprop:Generator_ColumnPropNameInTable="AplicaFegaColumn" msprop:Generator_UserColumnName="AplicaFega" type="xs:boolean" minOccurs="0" />
+              <xs:element name="FegaFlat" msprop:Generator_ColumnVarNameInTable="columnFegaFlat" msprop:Generator_ColumnPropNameInRow="FegaFlat" msprop:Generator_ColumnPropNameInTable="FegaFlatColumn" msprop:Generator_UserColumnName="FegaFlat" type="xs:boolean" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -1069,7 +1071,7 @@ WHERE        (Anexo = @Anexo) AND (Ciclo = @Ciclo) AND (TercioDeTasa = @TercioDe
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="ZTempWEB" msprop:Generator_TableClassName="ZTempWEBDataTable" msprop:Generator_TableVarName="tableZTempWEB" msprop:Generator_TablePropName="ZTempWEB" msprop:Generator_RowDeletingName="ZTempWEBRowDeleting" msprop:Generator_RowChangingName="ZTempWEBRowChanging" msprop:Generator_RowEvHandlerName="ZTempWEBRowChangeEventHandler" msprop:Generator_RowDeletedName="ZTempWEBRowDeleted" msprop:Generator_UserTableName="ZTempWEB" msprop:Generator_RowChangedName="ZTempWEBRowChanged" msprop:Generator_RowEvArgName="ZTempWEBRowChangeEvent" msprop:Generator_RowClassName="ZTempWEBRow">
+        <xs:element name="ZTempWEB" msprop:Generator_TableClassName="ZTempWEBDataTable" msprop:Generator_TableVarName="tableZTempWEB" msprop:Generator_RowChangedName="ZTempWEBRowChanged" msprop:Generator_TablePropName="ZTempWEB" msprop:Generator_RowDeletingName="ZTempWEBRowDeleting" msprop:Generator_RowChangingName="ZTempWEBRowChanging" msprop:Generator_RowEvHandlerName="ZTempWEBRowChangeEventHandler" msprop:Generator_RowDeletedName="ZTempWEBRowDeleted" msprop:Generator_RowClassName="ZTempWEBRow" msprop:Generator_UserTableName="ZTempWEB" msprop:Generator_RowEvArgName="ZTempWEBRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Anexo" msprop:Generator_ColumnVarNameInTable="columnAnexo" msprop:Generator_ColumnPropNameInRow="Anexo" msprop:Generator_ColumnPropNameInTable="AnexoColumn" msprop:Generator_UserColumnName="Anexo">
@@ -1096,7 +1098,7 @@ WHERE        (Anexo = @Anexo) AND (Ciclo = @Ciclo) AND (TercioDeTasa = @TercioDe
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Clientes" msprop:Generator_TableClassName="ClientesDataTable" msprop:Generator_TableVarName="tableClientes" msprop:Generator_TablePropName="Clientes" msprop:Generator_RowDeletingName="ClientesRowDeleting" msprop:Generator_RowChangingName="ClientesRowChanging" msprop:Generator_RowEvHandlerName="ClientesRowChangeEventHandler" msprop:Generator_RowDeletedName="ClientesRowDeleted" msprop:Generator_UserTableName="Clientes" msprop:Generator_RowChangedName="ClientesRowChanged" msprop:Generator_RowEvArgName="ClientesRowChangeEvent" msprop:Generator_RowClassName="ClientesRow">
+        <xs:element name="Clientes" msprop:Generator_TableClassName="ClientesDataTable" msprop:Generator_TableVarName="tableClientes" msprop:Generator_RowChangedName="ClientesRowChanged" msprop:Generator_TablePropName="Clientes" msprop:Generator_RowDeletingName="ClientesRowDeleting" msprop:Generator_RowChangingName="ClientesRowChanging" msprop:Generator_RowEvHandlerName="ClientesRowChangeEventHandler" msprop:Generator_RowDeletedName="ClientesRowDeleted" msprop:Generator_RowClassName="ClientesRow" msprop:Generator_UserTableName="Clientes" msprop:Generator_RowEvArgName="ClientesRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Agrupa" msprop:Generator_ColumnVarNameInTable="columnAgrupa" msprop:Generator_ColumnPropNameInRow="Agrupa" msprop:Generator_ColumnPropNameInTable="AgrupaColumn" msprop:Generator_UserColumnName="Agrupa">
@@ -1621,7 +1623,7 @@ WHERE        (Anexo = @Anexo) AND (Ciclo = @Ciclo) AND (TercioDeTasa = @TercioDe
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="AnexosTasaMoraFecORd" msprop:Generator_TableClassName="AnexosTasaMoraFecORdDataTable" msprop:Generator_TableVarName="tableAnexosTasaMoraFecORd" msprop:Generator_TablePropName="AnexosTasaMoraFecORd" msprop:Generator_RowDeletingName="AnexosTasaMoraFecORdRowDeleting" msprop:Generator_RowChangingName="AnexosTasaMoraFecORdRowChanging" msprop:Generator_RowEvHandlerName="AnexosTasaMoraFecORdRowChangeEventHandler" msprop:Generator_RowDeletedName="AnexosTasaMoraFecORdRowDeleted" msprop:Generator_UserTableName="AnexosTasaMoraFecORd" msprop:Generator_RowChangedName="AnexosTasaMoraFecORdRowChanged" msprop:Generator_RowEvArgName="AnexosTasaMoraFecORdRowChangeEvent" msprop:Generator_RowClassName="AnexosTasaMoraFecORdRow">
+        <xs:element name="AnexosTasaMoraFecORd" msprop:Generator_TableClassName="AnexosTasaMoraFecORdDataTable" msprop:Generator_TableVarName="tableAnexosTasaMoraFecORd" msprop:Generator_RowChangedName="AnexosTasaMoraFecORdRowChanged" msprop:Generator_TablePropName="AnexosTasaMoraFecORd" msprop:Generator_RowDeletingName="AnexosTasaMoraFecORdRowDeleting" msprop:Generator_RowChangingName="AnexosTasaMoraFecORdRowChanging" msprop:Generator_RowEvHandlerName="AnexosTasaMoraFecORdRowChangeEventHandler" msprop:Generator_RowDeletedName="AnexosTasaMoraFecORdRowDeleted" msprop:Generator_RowClassName="AnexosTasaMoraFecORdRow" msprop:Generator_UserTableName="AnexosTasaMoraFecORd" msprop:Generator_RowEvArgName="AnexosTasaMoraFecORdRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Anexo" msprop:Generator_ColumnVarNameInTable="columnAnexo" msprop:Generator_ColumnPropNameInRow="Anexo" msprop:Generator_ColumnPropNameInTable="AnexoColumn" msprop:Generator_UserColumnName="Anexo">

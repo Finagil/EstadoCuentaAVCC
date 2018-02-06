@@ -36,6 +36,7 @@ Public Class frmEstadoCuentaAvio
     Dim HastaVENC As Boolean = False
     Dim FECHA_APLICACION As Date
     Dim AplicaFega As Boolean
+    Dim FegaFLAT As Boolean
     Private Sub ButtonCargar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonCargar.Click
         Me.DetalleFINAGILTableAdapter.QuitaNulosFactura()
         Me.DetalleFINAGILTableAdapter.NoFacturado()
@@ -230,7 +231,12 @@ Public Class frmEstadoCuentaAvio
                                     End If
                                 End If
                                 If AplicaFega = False Then
-                                    rr("garantia") = 0
+                                    rr("fega") = 0
+                                Else
+                                    If FegaFLAT = 0 Then
+                                        dias = DateDiff("d", CadenaFecha(r("FechaFinal")), FechaVen)
+                                        rr("fega") = Math.Round(r("importe") * (0.0174 / 360) * dias, 2)
+                                    End If
                                 End If
 
 
@@ -314,7 +320,12 @@ Public Class frmEstadoCuentaAvio
                                     End If
                                 End If
                                 If AplicaFega = False Then
-                                    rr("garantia") = 0
+                                    rr("fega") = 0
+                                Else
+                                    If FegaFLAT = 0 Then
+                                        dias = DateDiff("d", CadenaFecha(r("FechaFinal")), FechaVen)
+                                        rr("fega") = Math.Round(r("importe") * (0.0174 / 360) * dias, 2)
+                                    End If
                                 End If
 
                                 Saldofin = rr("importe") + rr("fega") + rr("garantia") + rr("intereses") + Saldoini
@@ -548,6 +559,7 @@ Public Class frmEstadoCuentaAvio
         InteresMensual = y.Rows(0).Item("InteresMensual")
         PorcFega = y.Rows(0).Item("PorcFega")
         AplicaFega = y.Rows(0).Item("AplicaFega")
+        FegaFLAT = y.Rows(0).Item("FegaFlat")
     End Sub
 
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
