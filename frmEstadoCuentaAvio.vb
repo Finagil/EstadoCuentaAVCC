@@ -230,14 +230,17 @@ Public Class frmEstadoCuentaAvio
                                         rr("garantia") = 0
                                     End If
                                 End If
-                                If AplicaFega = False Then
-                                    rr("fega") = 0
-                                Else
-                                    If FegaFLAT = 0 Then
-                                        dias = DateDiff("d", CadenaFecha(r("FechaFinal")), FechaVen)
-                                        rr("fega") = Math.Round(r("importe") * (0.0174 / 360) * dias, 2)
+                                If Fondeo = "03" And con <> "PAGO" Then
+                                    If AplicaFega = False Then
+                                        rr("fega") = 0
+                                    Else
+                                        If FegaFLAT = 0 Then
+                                            dias = DateDiff("d", CadenaFecha(r("FechaFinal")), FechaVen)
+                                            rr("fega") = Math.Round(r("importe") * (0.0174 / 360) * dias, 2)
+                                        End If
                                     End If
                                 End If
+
 
 
 
@@ -319,14 +322,17 @@ Public Class frmEstadoCuentaAvio
                                         rr("garantia") = 0
                                     End If
                                 End If
-                                If AplicaFega = False Then
-                                    rr("fega") = 0
-                                Else
-                                    If FegaFLAT = 0 Then
-                                        dias = DateDiff("d", CadenaFecha(r("FechaFinal")), FechaVen)
-                                        rr("fega") = Math.Round(r("importe") * (0.0174 / 360) * dias, 2)
+                                If Fondeo = "03" And con <> "PAGO" Then
+                                    If AplicaFega = False Then
+                                        rr("fega") = 0
+                                    Else
+                                        If FegaFLAT = 0 Then
+                                            dias = DateDiff("d", CadenaFecha(r("FechaFinal")), FechaVen)
+                                            rr("fega") = Math.Round(r("importe") * (0.0174 / 360) * dias, 2)
+                                        End If
                                     End If
                                 End If
+
 
                                 Saldofin = rr("importe") + rr("fega") + rr("garantia") + rr("intereses") + Saldoini
                                 rr("SALDOFinal") = Saldofin
