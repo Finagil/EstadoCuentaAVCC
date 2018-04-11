@@ -13,6 +13,7 @@ Public Class frmEstadoCuentaAvio
     Dim Tasa As Double
     Dim TasaAUX As Double
     Dim TasaSegVid As Decimal
+    Dim TasaIvaCliente As Decimal
     Dim Tipar As String
     Dim Fondeo As String
     Dim AplicaGarantiaLIQ As String
@@ -192,11 +193,12 @@ Public Class frmEstadoCuentaAvio
 
                                 rr("tasabp") = Tasa
                                 If Tipar = "C" And Fondeo = "03" And con <> "PAGO" And Mid(con, 1, 2) <> "NC" Then
-                                    If FechaAutorizacion >= "20160101" Then
+                                    If PorcFega > 0 Then
+                                        rr("fega") = r("importe") * (PorcFega * (1 + TasaIvaCliente))
+                                    ElseIf FechaAutorizacion >= "20180410" Then
+                                        rr("fega") = r("importe") * 0.0232
+                                    ElseIf FechaAutorizacion >= "20160101" Then
                                         rr("fega") = r("importe") * 0.0174
-                                        If PorcFega > 0 Then
-                                            rr("fega") = r("importe") * PorcFega
-                                        End If
                                     Else
                                         rr("fega") = r("importe") * 0.0116
                                     End If
@@ -215,11 +217,12 @@ Public Class frmEstadoCuentaAvio
                                 If r("Anexo") = "043980001" And r("ciclo") = "01" And Consec = 3 Then rr("fega") = 25360.91
 
                                 If Tipar = "H" And Fondeo = "03" And con <> "PAGO" And con <> "BONIFICACIÓN GARANTÍA LÍQUIDA" And Mid(con, 1, 2) <> "NC" Then
-                                    If FechaAutorizacion >= "20160101" Then
+                                    If PorcFega > 0 Then
+                                        rr("fega") = r("importe") * (PorcFega * (1 + TasaIvaCliente))
+                                    ElseIf FechaAutorizacion >= "20180410" Then
+                                        rr("fega") = r("importe") * 0.0232
+                                    ElseIf FechaAutorizacion >= "20160101" Then
                                         rr("fega") = r("importe") * 0.0174
-                                        If PorcFega > 0 Then
-                                            rr("fega") = r("importe") * PorcFega
-                                        End If
                                     Else
                                         rr("fega") = r("importe") * 0.0116
                                     End If
@@ -285,11 +288,12 @@ Public Class frmEstadoCuentaAvio
                                 rr("tasabp") = Tasa
 
                                 If Tipar = "C" And Fondeo = "03" And con <> "PAGO" And Mid(con, 1, 2) <> "NC" Then
-                                    If FechaAutorizacion >= "20160101" Then
+                                    If PorcFega > 0 Then
+                                        rr("fega") = r("importe") * (PorcFega * (1 + TasaIvaCliente))
+                                    ElseIf FechaAutorizacion >= "20180410" Then
+                                        rr("fega") = r("importe") * 0.0232
+                                    ElseIf FechaAutorizacion >= "20160101" Then
                                         rr("fega") = r("importe") * 0.0174
-                                        If PorcFega > 0 Then
-                                            rr("fega") = r("importe") * PorcFega
-                                        End If
                                     Else
                                         rr("fega") = r("importe") * 0.0116
                                     End If
@@ -306,11 +310,12 @@ Public Class frmEstadoCuentaAvio
                                 If r("Anexo") = "043980001" And r("ciclo") = "01" And Consec = 1 Then rr("fega") = 454.14
                                 If r("Anexo") = "043980001" And r("ciclo") = "01" And Consec = 3 Then rr("fega") = 25360.91
                                 If Tipar = "H" And Fondeo = "03" And con <> "PAGO" And con <> "BONIFICACIÓN GARANTÍA LÍQUIDA" And Mid(con, 1, 2) <> "NC" Then
-                                    If FechaAutorizacion >= "20160101" Then
+                                    If PorcFega > 0 Then
+                                        rr("fega") = r("importe") * (PorcFega * (1 + TasaIvaCliente))
+                                    ElseIf FechaAutorizacion >= "20180410" Then
+                                        rr("fega") = r("importe") * 0.0232
+                                    ElseIf FechaAutorizacion >= "20160101" Then
                                         rr("fega") = r("importe") * 0.0174
-                                        If PorcFega > 0 Then
-                                            rr("fega") = r("importe") * PorcFega
-                                        End If
                                     Else
                                         rr("fega") = r("importe") * 0.0116
                                     End If
@@ -368,11 +373,12 @@ Public Class frmEstadoCuentaAvio
                             rr("tasabp") = Tasa
 
                             If Tipar = "C" And Fondeo = "03" And con <> "PAGO" And Mid(con, 1, 2) <> "NC" Then
-                                If FechaAutorizacion >= "20160101" Then
+                                If PorcFega > 0 Then
+                                    rr("fega") = r("importe") * (PorcFega * (1 + TasaIvaCliente))
+                                ElseIf FechaAutorizacion >= "20180410" Then
+                                    rr("fega") = r("importe") * 0.0232
+                                ElseIf FechaAutorizacion >= "20160101" Then
                                     rr("fega") = r("importe") * 0.0174
-                                    If PorcFega > 0 Then
-                                        rr("fega") = r("importe") * PorcFega
-                                    End If
                                 Else
                                     rr("fega") = r("importe") * 0.0116
                                 End If
@@ -389,11 +395,12 @@ Public Class frmEstadoCuentaAvio
                             If r("Anexo") = "043980001" And r("ciclo") = "01" And Consec = 1 Then rr("fega") = 454.14
                             If r("Anexo") = "043980001" And r("ciclo") = "01" And Consec = 3 Then rr("fega") = 25360.91
                             If Tipar = "H" And Fondeo = "03" And con <> "PAGO" And con <> "BONIFICACIÓN GARANTÍA LÍQUIDA" And Mid(con, 1, 2) <> "NC" Then
-                                If FechaAutorizacion >= "20160101" Then
+                                If PorcFega > 0 Then
+                                    rr("fega") = r("importe") * (PorcFega * (1 + TasaIvaCliente))
+                                ElseIf FechaAutorizacion >= "20180410" Then
+                                    rr("fega") = r("importe") * 0.0232
+                                ElseIf FechaAutorizacion >= "20160101" Then
                                     rr("fega") = r("importe") * 0.0174
-                                    If PorcFega > 0 Then
-                                        rr("fega") = r("importe") * PorcFega
-                                    End If
                                 Else
                                     rr("fega") = r("importe") * 0.0116
                                 End If
@@ -447,11 +454,12 @@ Public Class frmEstadoCuentaAvio
                         rr("tasabp") = Tasa
 
                         If Tipar = "C" And Fondeo = "03" And con <> "PAGO" And Mid(con, 1, 2) <> "NC" Then
-                            If FechaAutorizacion >= "20160101" Then
+                            If PorcFega > 0 Then
+                                rr("fega") = r("importe") * (PorcFega * (1 + TasaIvaCliente))
+                            ElseIf FechaAutorizacion >= "20180410" Then
+                                rr("fega") = r("importe") * 0.0232
+                            ElseIf FechaAutorizacion >= "20160101" Then
                                 rr("fega") = r("importe") * 0.0174
-                                If PorcFega > 0 Then
-                                    rr("fega") = r("importe") * PorcFega
-                                End If
                             Else
                                 rr("fega") = r("importe") * 0.0116
                             End If
@@ -468,13 +476,14 @@ Public Class frmEstadoCuentaAvio
                         If r("Anexo") = "043980001" And r("ciclo") = "01" And Consec = 1 Then rr("fega") = 454.14
                         If r("Anexo") = "043980001" And r("ciclo") = "01" And Consec = 3 Then rr("fega") = 25360.91
                         If Tipar = "H" And Fondeo = "03" And con <> "PAGO" And con <> "BONIFICACIÓN GARANTÍA LÍQUIDA" And Mid(con, 1, 2) <> "NC" Then
-                            If FechaAutorizacion >= "20160101" Then
+                            If PorcFega > 0 Then
+                                rr("fega") = r("importe") * (PorcFega * (1 + TasaIvaCliente))
+                            ElseIf FechaAutorizacion >= "20180410" Then
+                                rr("fega") = r("importe") * 0.0232
+                            ElseIf FechaAutorizacion >= "20160101" Then
                                 rr("fega") = r("importe") * 0.0174
-                                If PorcFega > 0 Then
-                                    rr("fega") = r("importe") * PorcFega
-                                End If
                             Else
-                                rr("fega") = r("importe") * 0.0116
+                                rr("fega") = r("importe") * 0.01161
                             End If
                             rr("garantia") = r("importe") * 0.1
                             'If (txtanexo.Text = "030140002" Or txtanexo.Text = "x85140012") And txtCiclo.Text = "10" Then
@@ -584,6 +593,7 @@ Public Class frmEstadoCuentaAvio
         PorcFega = y.Rows(0).Item("PorcFega")
         AplicaFega = y.Rows(0).Item("AplicaFega")
         FegaFLAT = y.Rows(0).Item("FegaFlat")
+        TasaIvaCliente = y.Rows(0).Item("TasaIvaCliente") / 100
     End Sub
 
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
@@ -882,11 +892,12 @@ Public Class frmEstadoCuentaAvio
                         rri("fega") = 0
                         rri("garantia") = 0
                         If Tipar = "C" And Fondeo = "03" And Mora = False Then
-                            If FechaAutorizacion >= "20160101" Then
+                            If PorcFega > 0 Then
+                                rri("fega") = SegVid * (PorcFega * (1 + TasaIvaCliente))
+                            ElseIf FechaAutorizacion >= "20180410" Then
+                                rri("fega") = SegVid * 0.0232
+                            ElseIf FechaAutorizacion >= "20160101" Then
                                 rri("fega") = SegVid * 0.0174
-                                If PorcFega > 0 Then
-                                    rri("fega") = SegVid * PorcFega
-                                End If
                             Else
                                 rri("fega") = SegVid * 0.0116
                             End If
@@ -894,11 +905,12 @@ Public Class frmEstadoCuentaAvio
                             rri("garantia") = 0
                         End If
                         If Tipar = "H" And Fondeo = "03" And Mora = False Then
-                            If FechaAutorizacion >= "20160101" Then
+                            If PorcFega > 0 Then
+                                rri("fega") = SegVid * (PorcFega * (1 + TasaIvaCliente))
+                            ElseIf FechaAutorizacion >= "20180410" Then
+                                rri("fega") = SegVid * 0.0232
+                            ElseIf FechaAutorizacion >= "20160101" Then
                                 rri("fega") = SegVid * 0.0174
-                                If PorcFega > 0 Then
-                                    rri("fega") = SegVid * PorcFega
-                                End If
                             Else
                                 rri("fega") = SegVid * 0.0116
                             End If
@@ -1063,11 +1075,12 @@ Public Class frmEstadoCuentaAvio
                     rri("garantia") = 0
                     'Console.WriteLine("C")
                     If Tipar = "C" And Fondeo = "03" And Mora = False Then
-                        If FechaAutorizacion >= "20160101" Then
+                        If PorcFega > 0 Then
+                            rri("fega") = SegVid * (PorcFega * (1 + TasaIvaCliente))
+                        ElseIf FechaAutorizacion >= "20180410" Then
+                            rri("fega") = SegVid * 0.0232
+                        ElseIf FechaAutorizacion >= "20160101" Then
                             rri("fega") = SegVid * 0.0174
-                            If PorcFega > 0 Then
-                                rri("fega") = SegVid * PorcFega
-                            End If
                         Else
                             rri("fega") = SegVid * 0.0116
                         End If
@@ -1075,11 +1088,12 @@ Public Class frmEstadoCuentaAvio
                     End If
                     'Console.WriteLine("h")
                     If Tipar = "H" And Fondeo = "03" And Mora = False Then
-                        If FechaAutorizacion >= "20160101" Then
+                        If PorcFega > 0 Then
+                            rri("fega") = SegVid * (PorcFega * (1 + TasaIvaCliente))
+                        ElseIf FechaAutorizacion >= "20180410" Then
+                            rri("fega") = SegVid * 0.0232
+                        ElseIf FechaAutorizacion >= "20160101" Then
                             rri("fega") = SegVid * 0.0174
-                            If PorcFega > 0 Then
-                                rri("fega") = SegVid * PorcFega
-                            End If
                         Else
                             rri("fega") = SegVid * 0.0116
                         End If
@@ -1192,22 +1206,24 @@ Public Class frmEstadoCuentaAvio
                         rri("fega") = 0
                         rri("garantia") = 0
                         If Tipar = "C" And Fondeo = "03" Then
-                            If FechaAutorizacion >= "20160101" Then
+                            If PorcFega > 0 Then
+                                rri("fega") = SegVid * (PorcFega * (1 + TasaIvaCliente))
+                            ElseIf FechaAutorizacion >= "20180410" Then
+                                rri("fega") = SegVid * 0.0232
+                            ElseIf FechaAutorizacion >= "20160101" Then
                                 rri("fega") = SegVid * 0.0174
-                                If PorcFega > 0 Then
-                                    rri("fega") = SegVid * PorcFega
-                                End If
                             Else
                                 rri("fega") = SegVid * 0.0116
                             End If
                             rri("garantia") = 0
                         End If
                         If Tipar = "H" And Fondeo = "03" Then
-                            If FechaAutorizacion >= "20160101" Then
+                            If PorcFega > 0 Then
+                                rri("fega") = SegVid * (PorcFega * (1 + TasaIvaCliente))
+                            ElseIf FechaAutorizacion >= "20180410" Then
+                                rri("fega") = SegVid * 0.0232
+                            ElseIf FechaAutorizacion >= "20160101" Then
                                 rri("fega") = SegVid * 0.0174
-                                If PorcFega > 0 Then
-                                    rri("fega") = SegVid * PorcFega
-                                End If
                             Else
                                 rri("fega") = SegVid * 0.0116
                             End If
