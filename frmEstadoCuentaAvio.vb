@@ -820,8 +820,13 @@ Public Class frmEstadoCuentaAvio
                     '
 
                     rri("Consecutivo") = Consec
-                    fec = fec.AddDays(Correcion * -1)
-                    rri("fechainicial") = fec.ToString("yyyyMMdd")
+
+                    If Correcion = 1 Then
+                        rri("fechainicial") = fec.ToString("yyyyMMdd")
+                    Else
+                        fec = fec.AddDays(Correcion * -1)
+                        rri("fechainicial") = fec.ToString("yyyyMMdd")
+                    End If
                     fec = fec.AddDays(Correcion)
                     rri("fechafinal") = aux.ToString("yyyyMMdd")
                     'If Array.IndexOf(SinMoraHastaPago, txtanexo.Text) >= 0 Then 'ELISANDER sin moratorios despues del ultimo pago
@@ -1007,8 +1012,14 @@ Public Class frmEstadoCuentaAvio
                 'LINEA INETRES
                 Consec += 1
                 rri("Consecutivo") = Consec
-                fec = fec.AddDays(Correcion * -1)
-                rri("fechainicial") = fec.ToString("yyyyMMdd")
+
+                If Correcion = 1 Then
+                    rri("fechainicial") = fec.ToString("yyyyMMdd")
+                Else
+                    fec = fec.AddDays(Correcion * -1)
+                    rri("fechainicial") = fec.ToString("yyyyMMdd")
+                End If
+
                 fec = fec.AddDays(Correcion)
                 rri("fechafinal") = aux.ToString("yyyyMMdd")
                 'If Array.IndexOf(SinMoraHastaPago, txtanexo.Text) >= 0 Then 'ELISANDER sin moratorios despues del ultimo pago
@@ -1115,11 +1126,16 @@ Public Class frmEstadoCuentaAvio
                     'Console.WriteLine("hc fin")
                 End If
                 '++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                aux = aux.AddDays(1)
+                f = aux.ToString("yyyyMMdd")
+                'Console.WriteLine("GeneraInteresesIIinterno1")
+                GeneraInteresesII(f, Consec, r, SaldoFin, 1, H)
+            Else
+                If SaldoFin > 0 Then
+                    GeneraInteresesII(f, Consec, r, SaldoFin, 1, H)
+                End If
             End If
-            aux = aux.AddDays(1)
-            f = aux.ToString("yyyyMMdd")
-            'Console.WriteLine("GeneraInteresesIIinterno1")
-            GeneraInteresesII(f, Consec, r, SaldoFin, 1, H)
+
             'Console.WriteLine("GeneraInteresesIIinterno2")
         Else
             'Console.WriteLine("GeneraInteresesII2")
