@@ -1298,7 +1298,7 @@ Public Class frmEstadoCuentaAvio
     End Function
 
     Private Function CalculaPrima(ByVal Cli As String, ByVal Fec As String, ByVal SaldoAnexo As Double) As Double
-        Dim Factor As Double = 0
+        Dim Factor As Decimal = 0
         Dim Saldos As New ProductionDataSetTableAdapters.SaldoClienteTableAdapter
         Dim T As New ProductionDataSet.SaldoClienteDataTable
         Dim Saldo As Double = 0
@@ -1313,7 +1313,7 @@ Public Class frmEstadoCuentaAvio
             End If
         Next
         If SaldoAnexo + Saldo > 5000000 Then
-            Factor = SaldoAnexo / SaldoAnexo + Saldo
+            Factor = SaldoAnexo / (SaldoAnexo + Saldo)
             Prima = ((5000000 / 1000) * TasaSegVid) * Factor
         Else
             Prima = (SaldoAnexo / 1000) * TasaSegVid
