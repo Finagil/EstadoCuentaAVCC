@@ -192,6 +192,7 @@ Public Class frmEstadoCuentaAvio
                                 End If
 
                                 rr("tasabp") = Tasa
+
                                 If Tipar = "C" And Fondeo = "03" And con <> "PAGO" And Mid(con, 1, 2) <> "NC" Then
                                     If PorcFega > 0 Then
                                         rr("fega") = r("importe") * (PorcFega * (1 + TasaIvaCliente))
@@ -227,31 +228,29 @@ Public Class frmEstadoCuentaAvio
                                         rr("garantia") = 0
                                     End If
                                 End If
+
                                 If Fondeo = "03" And con <> "PAGO" Then
                                     If AplicaFega = False Then
                                         rr("fega") = 0
                                     Else
                                         If FegaFLAT = 0 Then
-                                            dias = DateDiff("d", CadenaFecha(r("FechaFinal")), FechaVen)
                                             If FechaVen = CDate("29/03/2019") Then
-                                                dias = DateDiff("d", CadenaFecha(r("FechaFinal")), CDate("15/02/2019")) 'por camvio de vencimiento jjavier y vcruz
+                                                dias = DateDiff("d", CadenaFecha(r("FechaFinal")), CDate("15/02/2019")) 'por cambio de vencimiento jjavier y vcruz
                                                 PorcFega = 0.0174
+                                            Else
+                                                dias = DateDiff("d", CadenaFecha(r("FechaFinal")), FechaVen)
                                             End If
-                                            If r("FechaFinal") < "20190214" Then PorcFega = 0.0174
                                             rr("fega") = Math.Round(r("importe") * (PorcFega / 360) * dias, 2)
-                                            End If
                                         End If
+                                    End If
                                 End If
 
-
-
-
                                 Saldofin = rr("importe") + rr("fega") + rr("garantia") + rr("intereses") + Saldoini
-                                rr("SALDOFinal") = Saldofin
-                                rr("SALDOinicial") = Saldoini
-                                UltimoCorte = rr("fechaFinal")
-                            Else
-                                FechaCorte = CadenaFecha(Fecha.ToString("yyyyMM01"))
+                                    rr("SALDOFinal") = Saldofin
+                                    rr("SALDOinicial") = Saldoini
+                                    UltimoCorte = rr("fechaFinal")
+                                Else
+                                    FechaCorte = CadenaFecha(Fecha.ToString("yyyyMM01"))
                                 FechaCorte = FechaCorte.AddMonths(1)
                                 FechaCorte = FechaCorte.AddDays(-1)
                                 dias = DateDiff(DateInterval.Day, Fecha, FechaCorte)
@@ -322,17 +321,18 @@ Public Class frmEstadoCuentaAvio
                                         rr("garantia") = 0
                                     End If
                                 End If
+
                                 If Fondeo = "03" And con <> "PAGO" Then
                                     If AplicaFega = False Then
                                         rr("fega") = 0
                                     Else
                                         If FegaFLAT = 0 Then
-                                            dias = DateDiff("d", CadenaFecha(r("FechaFinal")), FechaVen)
                                             If FechaVen = CDate("29/03/2019") Then
-                                                dias = DateDiff("d", CadenaFecha(r("FechaFinal")), CDate("15/02/2019")) 'por camvio de vencimiento jjavier y vcruz
+                                                dias = DateDiff("d", CadenaFecha(r("FechaFinal")), CDate("15/02/2019")) 'por cambio de vencimiento jjavier y vcruz
                                                 PorcFega = 0.0174
+                                            Else
+                                                dias = DateDiff("d", CadenaFecha(r("FechaFinal")), FechaVen)
                                             End If
-                                            If r("FechaFinal") < "20190214" Then PorcFega = 0.0174
                                             rr("fega") = Math.Round(r("importe") * (PorcFega / 360) * dias, 2)
                                         End If
                                     End If
@@ -407,21 +407,23 @@ Public Class frmEstadoCuentaAvio
                                     rr("garantia") = 0
                                 End If
                             End If
+
                             If Fondeo = "03" And con <> "PAGO" Then
                                 If AplicaFega = False Then
                                     rr("fega") = 0
                                 Else
                                     If FegaFLAT = 0 Then
-                                        dias = DateDiff("d", CadenaFecha(r("FechaFinal")), FechaVen)
                                         If FechaVen = CDate("29/03/2019") Then
-                                            dias = DateDiff("d", CadenaFecha(r("FechaFinal")), CDate("15/02/2019")) 'por camvio de vencimiento jjavier y vcruz
+                                            dias = DateDiff("d", CadenaFecha(r("FechaFinal")), CDate("15/02/2019")) 'por cambio de vencimiento jjavier y vcruz
                                             PorcFega = 0.0174
+                                        Else
+                                            dias = DateDiff("d", CadenaFecha(r("FechaFinal")), FechaVen)
                                         End If
-                                        If r("FechaFinal") < "20190214" Then PorcFega = 0.0174
                                         rr("fega") = Math.Round(r("importe") * (PorcFega / 360) * dias, 2)
                                     End If
                                 End If
                             End If
+
                             Saldofin = rr("importe") + rr("fega") + rr("garantia") + r("intereses") + Saldoini
                             rr("SALDOFinal") = Saldofin
                             rr("SALDOinicial") = Saldoini
@@ -488,21 +490,23 @@ Public Class frmEstadoCuentaAvio
                                 rr("garantia") = 0
                             End If
                         End If
+
                         If Fondeo = "03" And con <> "PAGO" Then
                             If AplicaFega = False Then
                                 rr("fega") = 0
                             Else
                                 If FegaFLAT = 0 Then
-                                    dias = DateDiff("d", CadenaFecha(r("FechaFinal")), FechaVen)
                                     If FechaVen = CDate("29/03/2019") Then
-                                        dias = DateDiff("d", CadenaFecha(r("FechaFinal")), CDate("15/02/2019")) 'por camvio de vencimiento jjavier y vcruz
+                                        dias = DateDiff("d", CadenaFecha(r("FechaFinal")), CDate("15/02/2019")) 'por cambio de vencimiento jjavier y vcruz
                                         PorcFega = 0.0174
+                                    Else
+                                        dias = DateDiff("d", CadenaFecha(r("FechaFinal")), FechaVen)
                                     End If
-                                    If r("FechaFinal") < "20190214" Then PorcFega = 0.0174
                                     rr("fega") = Math.Round(r("importe") * (PorcFega / 360) * dias, 2)
                                 End If
                             End If
                         End If
+
                         Saldofin = rr("importe") + rr("fega") + rr("garantia") + rr("intereses") + Saldoini
                         rr("SALDOFinal") = Saldofin
                         rr("SALDOinicial") = Saldoini
@@ -901,7 +905,6 @@ Public Class frmEstadoCuentaAvio
                             Else
                                 rri("fega") = SegVid * 0.0116
                             End If
-
                             rri("garantia") = 0
                         End If
                         If Tipar = "H" And Fondeo = "03" And Mora = False Then
@@ -917,6 +920,16 @@ Public Class frmEstadoCuentaAvio
                             rri("garantia") = SegVid * 0.1
                             If UCase(AplicaGarantiaLIQ) = "NO" Then
                                 rri("garantia") = 0
+                            End If
+                        End If
+                        If Fondeo = "03" And rri("fechafinal") > "20190220" Then
+                            If AplicaFega = False Then
+                                rri("fega") = 0
+                            Else
+                                If FegaFLAT = 0 Then
+                                    dias = DateDiff("d", CadenaFecha(rri("fechafinal")), FechaVen)
+                                    rri("fega") = Math.Round(SegVid * (PorcFega / 360) * dias, 2)
+                                End If
                             End If
                         End If
                         '***** SE QUITA FEGA Y GL DEL SEGURO DE VIDA A PARTIR DEL MES DE SEPTIEMBRE, ELISANDER PINEDA #ect 26092015.N
@@ -1086,7 +1099,6 @@ Public Class frmEstadoCuentaAvio
                         End If
                         rri("garantia") = 0
                     End If
-                    'Console.WriteLine("h")
                     If Tipar = "H" And Fondeo = "03" And Mora = False Then
                         If PorcFega > 0 Then
                             rri("fega") = SegVid * (PorcFega * (1 + TasaIvaCliente))
@@ -1102,7 +1114,16 @@ Public Class frmEstadoCuentaAvio
                             rri("garantia") = 0
                         End If
                     End If
-                    'Console.WriteLine("h2")
+                    If Fondeo = "03" And rri("fechafinal") > "20190220" Then
+                        If AplicaFega = False Then
+                            rri("fega") = 0
+                        Else
+                            If FegaFLAT = 0 Then
+                                dias = DateDiff("d", CadenaFecha(rri("fechafinal")), FechaVen)
+                                rri("fega") = Math.Round(SegVid * (PorcFega / 360) * dias, 2)
+                            End If
+                        End If
+                    End If
                     '***** SE QUITA FEGA Y GL DEL SEGURO DE VIDA A PARTIR DEL MES DE SEPTIEMBRE, ELISANDER PINEDA #ect 26092015.N
                     If FecVid > FechaQuitaFega Then
                         rri("fega") = 0
@@ -1230,6 +1251,16 @@ Public Class frmEstadoCuentaAvio
                             rri("garantia") = SegVid * 0.1
                             If UCase(AplicaGarantiaLIQ) = "NO" Then
                                 rri("garantia") = 0
+                            End If
+                        End If
+                        If Fondeo = "03" And rri("fechafinal") > "20190220" Then
+                            If AplicaFega = False Then
+                                rri("fega") = 0
+                            Else
+                                If FegaFLAT = 0 Then
+                                    dias = DateDiff("d", CadenaFecha(rri("fechafinal")), FechaVen)
+                                    rri("fega") = Math.Round(SegVid * (PorcFega / 360) * dias, 2)
+                                End If
                             End If
                         End If
                         '***** SE QUITA FEGA Y GL DEL SEGURO DE VIDA A PARTIR DEL MES DE SEPTIEMBRE, ELISANDER PINEDA #ect 26092015.N
