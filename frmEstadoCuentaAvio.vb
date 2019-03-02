@@ -598,6 +598,9 @@ Public Class frmEstadoCuentaAvio
         AplicaFega = y.Rows(0).Item("AplicaFega")
         FegaFLAT = y.Rows(0).Item("FegaFlat")
         TasaIvaCliente = y.Rows(0).Item("TasaIvaCliente") / 100
+        If FecTope < CDate("1900-01-01") Then
+            FecTope = FechaVen
+        End If
     End Sub
 
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
