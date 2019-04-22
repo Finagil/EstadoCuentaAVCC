@@ -7799,8 +7799,8 @@ Namespace ProductionDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Private Sub InitConnection()
             Me._connection = New Global.System.Data.SqlClient.SqlConnection()
-            Me._connection.ConnectionString = "Data Source=192.168.29.41;Initial Catalog=Production;User ID=User_PRO;Password=Us"& _ 
-                "er_PRO2015"
+            Me._connection.ConnectionString = "Data Source=192.168.10.232;Initial Catalog=Production;User ID=User_PRO;Password=U"& _ 
+                "ser_PRO2015"
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -8533,8 +8533,8 @@ Namespace ProductionDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Private Sub InitConnection()
             Me._connection = New Global.System.Data.SqlClient.SqlConnection()
-            Me._connection.ConnectionString = "Data Source=192.168.29.41;Initial Catalog=Production;User ID=User_PRO;Password=Us"& _ 
-                "er_PRO2015"
+            Me._connection.ConnectionString = "Data Source=192.168.10.232;Initial Catalog=Production;User ID=User_PRO;Password=U"& _ 
+                "ser_PRO2015"
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -8758,8 +8758,8 @@ Namespace ProductionDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Private Sub InitConnection()
             Me._connection = New Global.System.Data.SqlClient.SqlConnection()
-            Me._connection.ConnectionString = "Data Source=192.168.29.41;Initial Catalog=Production;User ID=User_PRO;Password=Us"& _ 
-                "er_PRO2015"
+            Me._connection.ConnectionString = "Data Source=192.168.10.232;Initial Catalog=Production;User ID=User_PRO;Password=U"& _ 
+                "ser_PRO2015"
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -8781,7 +8781,7 @@ Namespace ProductionDataSetTableAdapters
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
             Me._commandCollection(1).CommandText = "SELECT        MAX(Fecha) AS Fecha"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            CONT_FechasAplicacion"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE  "& _ 
-                "      (Estatus = N'Vigente')"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY MAX(Fecha) DESC"
+                "      (Estatus = N'Vigente')"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Fecha DESC"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(2).Connection = Me.Connection
@@ -8852,7 +8852,7 @@ Namespace ProductionDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function FechaAplicacion() As Global.System.Nullable(Of Date)
+        Public Overloads Overridable Function FechaAplicacion() As Object
             Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(1)
             Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
             If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -8869,9 +8869,9 @@ Namespace ProductionDataSetTableAdapters
             End Try
             If ((returnValue Is Nothing)  _
                         OrElse (returnValue.GetType Is GetType(Global.System.DBNull))) Then
-                Return New Global.System.Nullable(Of Date)()
+                Return Nothing
             Else
-                Return New Global.System.Nullable(Of Date)(CType(returnValue,Date))
+                Return CType(returnValue,Object)
             End If
         End Function
         
@@ -9107,8 +9107,8 @@ Namespace ProductionDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Private Sub InitConnection()
             Me._connection = New Global.System.Data.SqlClient.SqlConnection()
-            Me._connection.ConnectionString = "Data Source=192.168.29.41;Initial Catalog=Production;User ID=User_PRO;Password=Us"& _ 
-                "er_PRO2015"
+            Me._connection.ConnectionString = "Data Source=192.168.10.232;Initial Catalog=Production;User ID=User_PRO;Password=U"& _ 
+                "ser_PRO2015"
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -9366,8 +9366,8 @@ Namespace ProductionDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Private Sub InitConnection()
             Me._connection = New Global.System.Data.SqlClient.SqlConnection()
-            Me._connection.ConnectionString = "Data Source=192.168.29.41;Initial Catalog=Production;User ID=User_PRO;Password=Us"& _ 
-                "er_PRO2015"
+            Me._connection.ConnectionString = "Data Source=192.168.10.232;Initial Catalog=Production;User ID=User_PRO;Password=U"& _ 
+                "ser_PRO2015"
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -9653,8 +9653,8 @@ Namespace ProductionDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Private Sub InitConnection()
             Me._connection = New Global.System.Data.SqlClient.SqlConnection()
-            Me._connection.ConnectionString = "Data Source=192.168.29.41;Initial Catalog=Production;User ID=User_PRO;Password=Us"& _ 
-                "er_PRO2015"
+            Me._connection.ConnectionString = "Data Source=192.168.10.232;Initial Catalog=Production;User ID=User_PRO;Password=U"& _ 
+                "ser_PRO2015"
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -9887,8 +9887,8 @@ Namespace ProductionDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Private Sub InitConnection()
             Me._connection = New Global.System.Data.SqlClient.SqlConnection()
-            Me._connection.ConnectionString = "Data Source=192.168.29.41;Initial Catalog=Production;User ID=User_PRO;Password=Us"& _ 
-                "er_PRO2015"
+            Me._connection.ConnectionString = "Data Source=192.168.10.232;Initial Catalog=Production;User ID=User_PRO;Password=U"& _ 
+                "ser_PRO2015"
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -10395,8 +10395,8 @@ Namespace ProductionDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Private Sub InitConnection()
             Me._connection = New Global.System.Data.SqlClient.SqlConnection()
-            Me._connection.ConnectionString = "Data Source=192.168.29.41;Initial Catalog=Production;User ID=User_PRO;Password=Us"& _ 
-                "er_PRO2015"
+            Me._connection.ConnectionString = "Data Source=192.168.10.232;Initial Catalog=Production;User ID=User_PRO;Password=U"& _ 
+                "ser_PRO2015"
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -11132,8 +11132,8 @@ Namespace ProductionDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Private Sub InitConnection()
             Me._connection = New Global.System.Data.SqlClient.SqlConnection()
-            Me._connection.ConnectionString = "Data Source=192.168.29.41;Initial Catalog=Production;User ID=User_PRO;Password=Us"& _ 
-                "er_PRO2015"
+            Me._connection.ConnectionString = "Data Source=192.168.10.232;Initial Catalog=Production;User ID=User_PRO;Password=U"& _ 
+                "ser_PRO2015"
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
