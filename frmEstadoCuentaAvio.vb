@@ -852,6 +852,9 @@ Public Class frmEstadoCuentaAvio
                     rri("fega") = 0
                     rri("garantia") = 0
                     Intereses = rri("saldoinicial") * (Tasa / 100 / 360) * dias
+                    If txtanexo.Text = "080020036" And txtCiclo.Text = "20" And fec = CDate("30/11/2018") And aux = CDate("30/11/2018") Then
+                        Intereses = 0
+                    End If
                     rri("intereses") = Intereses
                     SaldoFin = SaldoIni + Intereses
                     rri("saldofinal") = SaldoFin
@@ -926,6 +929,7 @@ Public Class frmEstadoCuentaAvio
                     GeneraIntereses(f, Consec, r, SaldoFin, 1, H)
                 End If
             End If
+
 
         End If
     End Sub
@@ -1248,7 +1252,8 @@ Public Class frmEstadoCuentaAvio
 
     Private Sub EnviaError(ByVal Para As String, ByVal Mensaje As String, ByVal Asunto As String)
         Dim Mensage As New MailMessage("Avio@cmoderna.com", Trim(Para), Trim(Asunto), Mensaje)
-        Dim Cliente As New SmtpClient("smtp01.cmoderna.com", 26)
+        Dim Cliente As New SmtpClient("smtp01.cmoderna.com", 25)
+        Cliente.Credentials = New System.Net.NetworkCredential("ecacerest", "c4c3r1t0s", "cmoderna")
         Mensage.IsBodyHtml = True
         Mensage.Priority = MailPriority.High
         Cliente.Send(Mensage)
