@@ -1252,9 +1252,10 @@ Public Class frmEstadoCuentaAvio
 
     Private Sub EnviaError(ByVal Para As String, ByVal Mensaje As String, ByVal Asunto As String)
         Dim Mensage As New MailMessage("Avio@cmoderna.com", Trim(Para), Trim(Asunto), Mensaje)
-        Dim Cliente As New SmtpClient("smtp01.cmoderna.com", 25)
-        Cliente.Credentials = New System.Net.NetworkCredential("ecacerest", "c4c3r1t0s", "cmoderna")
-        Mensage.IsBodyHtml = True
+        Dim Cliente As New SmtpClient(My.Settings.SMTP, My.Settings.SMTP_port)
+        Dim Credenciales As String() = My.Settings.SMTP_creden.Split(",")
+        Cliente.Credentials = New System.Net.NetworkCredential(Credenciales(0), Credenciales(1), Credenciales(2))
+            Mensage.IsBodyHtml = True
         Mensage.Priority = MailPriority.High
         Cliente.Send(Mensage)
     End Sub
