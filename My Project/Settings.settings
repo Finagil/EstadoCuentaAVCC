@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="SMTP" Type="System.String" Scope="User">
-      <Value Profile="(Default)">192.168.110.1</Value>
+      <Value Profile="(Default)">SMTP85.CMODERNA.COM</Value>
     </Setting>
     <Setting Name="SMTP_port" Type="System.String" Scope="User">
       <Value Profile="(Default)">26</Value>

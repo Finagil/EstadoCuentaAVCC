@@ -56,7 +56,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("192.168.110.1")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("SMTP85.CMODERNA.COM")>  _
         Public Property SMTP() As String
             Get
                 Return CType(Me("SMTP"),String)
