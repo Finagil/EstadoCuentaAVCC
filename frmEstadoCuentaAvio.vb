@@ -17,6 +17,7 @@ Public Class frmEstadoCuentaAvio
     Dim Tipar As String
     Dim Fondeo As String
     Dim AplicaGarantiaLIQ As String
+    Dim PorcGarLIQ As Decimal
     Dim arg() As String
     Dim ArreSegVid(50, 3) As String
     Dim DatFact(3) As String
@@ -223,7 +224,7 @@ Public Class frmEstadoCuentaAvio
                                         PorcFega = 0.01
                                     End If
 
-                                    rr("garantia") = r("importe") * 0.1
+                                    rr("garantia") = r("importe") * PorcGarLIQ
                                     If UCase(AplicaGarantiaLIQ) = "NO" Then
                                         rr("garantia") = 0
                                     End If
@@ -314,7 +315,7 @@ Public Class frmEstadoCuentaAvio
                                         rr("fega") = r("importe") * 0.0116
                                         PorcFega = 0.01
                                     End If
-                                    rr("garantia") = r("importe") * 0.1
+                                    rr("garantia") = r("importe") * PorcGarLIQ
 
 
                                     If UCase(AplicaGarantiaLIQ) = "NO" Then
@@ -401,7 +402,7 @@ Public Class frmEstadoCuentaAvio
                                     rr("fega") = r("importe") * 0.0116
                                     PorcFega = 0.01
                                 End If
-                                rr("garantia") = r("importe") * 0.1
+                                rr("garantia") = r("importe") * PorcGarLIQ
 
                                 If UCase(AplicaGarantiaLIQ) = "NO" Then
                                     rr("garantia") = 0
@@ -484,7 +485,7 @@ Public Class frmEstadoCuentaAvio
                                 rr("fega") = r("importe") * 0.01161
                                 PorcFega = 0.01
                             End If
-                            rr("garantia") = r("importe") * 0.1
+                            rr("garantia") = r("importe") * PorcGarLIQ
 
                             If UCase(AplicaGarantiaLIQ) = "NO" Then
                                 rr("garantia") = 0
@@ -568,6 +569,7 @@ Public Class frmEstadoCuentaAvio
         UltimoPAGO_CON = TaAvios.UltimoPago(a, c)
         UltimoCORTE_CON = TaAvios.UltimaFecha(a, c)
         UltimoPAGO_GEN = TaTasaMora.SacaFecha(a, c)
+        PorcGarLIQ = DetalleFINAGILTableAdapter1.SacaPorcGarLIQ(a, c)
         If TaTasaMora.TieneTercioDeTasa(a, c, True) > 0 Then
             TercioDeTasa = True
         Else
