@@ -773,6 +773,9 @@ Public Class frmEstadoCuentaAvio
         hoy = hoy.AddDays(-1)
 
         Dim rri As Estado_de_Cuenta.ProductionDataSet.DetalleFINAGILRow
+        If fec > FecTope Then
+            Exit Sub 'YA ESTA VENCIDO Y NO GENERA INTERES
+        End If
         If fec <= hoy And SaldoFin > 0 Then
             FechaAnt = aux.AddMonths(-1)
             aux = aux.AddMonths(1)
@@ -947,6 +950,9 @@ Public Class frmEstadoCuentaAvio
         Dim FechaAnt As Date = Now
         Dim rri As Estado_de_Cuenta.ProductionDataSet.DetalleFINAGILRow
         Dim Mora As Boolean = False
+        If fec > FecTope Then
+            Exit Sub 'YA ESTA VENCIDO Y NO GENERA INTERES
+        End If
         If fec <= hoy And SaldoFin > 0 Then
             'Console.WriteLine("GeneraInteresesII1")
             FechaAnt = aux.AddMonths(-1)
