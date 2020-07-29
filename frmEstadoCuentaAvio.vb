@@ -63,7 +63,7 @@ Public Class frmEstadoCuentaAvio
     End Sub
 
     Private Sub ButtonRecalc_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonReCalc.Click
-        ReDim ArreSegVid(50, 3)
+        ReDim ArreSegVid(100, 3)
         If Val(LBtotal.Text) > 0 Then
             'Console.WriteLine(LBtotal.Text)
             TasaSegVid = SeguroVida(txtanexo.Text, txtCiclo.Text)
