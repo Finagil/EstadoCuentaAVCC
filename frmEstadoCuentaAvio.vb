@@ -147,6 +147,7 @@ Public Class frmEstadoCuentaAvio
         Dim FechaANT As Date
         Dim con As String
         Dim Ta As New Estado_de_Cuenta.ProductionDataSet.DetalleFINAGILDataTable
+        Dim EfectivoFinDeMes As Boolean
         'Dim fechaFIN As Date
         Me.DetalleFINAGILTableAdapter.FillByAnexoFecha(Ta, txtanexo.Text, txtCiclo.Text)
         SumaIni = DetalleFINAGILTableAdapter.SumaCargosPag(txtanexo.Text, txtCiclo.Text)
@@ -159,6 +160,11 @@ Public Class frmEstadoCuentaAvio
                     If con = "PAGO" Then UltimoPAGO = r("FechaFinal")
                     If Mid(con, 1, 2) = "NC" Then
                         UltimoPAGO = r("FechaFinal")
+                    End If
+                    If InStr(r("Concepto"), "EFECTIVO") And CadenaFecha(r("FechaFinal")).AddDays(1).Day = 1 Then
+                        EfectivoFinDeMes = True
+                    Else
+                        EfectivoFinDeMes = False
                     End If
                     fechaINI = CadenaFecha(r("fechaFinal"))
                     If uno = False Then
@@ -522,19 +528,19 @@ Public Class frmEstadoCuentaAvio
             If CheckProyectado.Checked = False Then
                 If HastaVENC = True Then
                     FecTope = CadenaFecha(AHORA.AddDays(DiasMenos).ToString("yyyyMMdd"))
-                    GeneraIntereses(UltimoCorte, Consec, r, Saldofin, 0, AHORA.AddDays(DiasMenos).ToString("yyyyMMdd"))
+                    GeneraIntereses(UltimoCorte, Consec, r, Saldofin, 0, AHORA.AddDays(DiasMenos).ToString("yyyyMMdd"), EfectivoFinDeMes)
                 Else
                     FecTope = CadenaFecha(AHORA.AddDays(DiasMenos).ToString("yyyyMM01"))
-                    GeneraIntereses(UltimoCorte, Consec, r, Saldofin, 0, AHORA.AddDays(DiasMenos).ToString("yyyyMM01"))
+                    GeneraIntereses(UltimoCorte, Consec, r, Saldofin, 0, AHORA.AddDays(DiasMenos).ToString("yyyyMM01"), EfectivoFinDeMes)
                 End If
 
             Else
                 If HastaVENC = True Then
                     FecTope = CadenaFecha(AHORA.AddDays(DiasMenos).ToString("yyyyMMdd"))
-                    GeneraIntereses(UltimoCorte, Consec, r, Saldofin, 0, AHORA.AddDays(DiasMenos).ToString("yyyyMMdd"))
+                    GeneraIntereses(UltimoCorte, Consec, r, Saldofin, 0, AHORA.AddDays(DiasMenos).ToString("yyyyMMdd"), EfectivoFinDeMes)
                 Else
                     FecTope = CadenaFecha(AHORA.AddMonths(1).ToString("yyyyMM01"))
-                    GeneraIntereses(UltimoCorte, Consec, r, Saldofin, 0, AHORA.AddMonths(1).ToString("yyyyMM01"))
+                    GeneraIntereses(UltimoCorte, Consec, r, Saldofin, 0, AHORA.AddMonths(1).ToString("yyyyMM01"), EfectivoFinDeMes)
                 End If
 
             End If
@@ -758,7 +764,7 @@ Public Class frmEstadoCuentaAvio
         Me.ProductionDataSet.DetalleFINAGIL.AcceptChanges()
     End Sub
 
-    Sub GeneraIntereses(ByRef f As String, ByRef Consec As Integer, ByRef r As Estado_de_Cuenta.ProductionDataSet.DetalleFINAGILRow, ByRef SaldoFin As Double, ByVal Correcion As Integer, ByVal H As String)
+    Sub GeneraIntereses(ByRef f As String, ByRef Consec As Integer, ByRef r As Estado_de_Cuenta.ProductionDataSet.DetalleFINAGILRow, ByRef SaldoFin As Double, ByVal Correcion As Integer, ByVal H As String, efectivoFindeMES As Boolean)
         Dim fec As Date = CadenaFecha(f)
         Dim Intereses As Double
         Dim SaldoIni As Double
@@ -819,111 +825,118 @@ Public Class frmEstadoCuentaAvio
                     UltimoCorte = aux.ToString("yyyyMMdd")
                     aux = aux.AddDays(1)
                     f = aux.ToString("yyyyMMdd")
-                    GeneraIntereses(f, Consec, r, SaldoFin, 1, H)
+                    GeneraIntereses(f, Consec, r, SaldoFin, 1, H, efectivoFindeMES)
                 Else
-                    r.Consecutivo = Consec * 100
-                    Me.ProductionDataSet1.DetalleFINAGIL.ImportRow(r)
-                    rri = Me.ProductionDataSet1.DetalleFINAGIL.Rows(Consec)
-                    'calcula interes dentro de un mes
-                    SaldoIni = SaldoFin
-                    'LINEA INETRES
+                    If efectivoFindeMES Then
+                        aux = aux.AddDays(1)
+                        f = aux.ToString("yyyyMMdd")
+                        efectivoFindeMES = False
+                    Else
 
-                    Consec += 1
-                    '
-
-                    rri("Consecutivo") = Consec
-                    fec = fec.AddDays(Correcion * -1)
-                    rri("fechainicial") = fec.ToString("yyyyMMdd")
-                    fec = fec.AddDays(Correcion)
-                    rri("fechafinal") = aux.ToString("yyyyMMdd")
-                    'If Array.IndexOf(SinMoraHastaPago, txtanexo.Text) >= 0 Then 'ELISANDER sin moratorios despues del ultimo pago
-                    If UltimoPAGO_GEN.Trim <> "" And UltimoPAGO_GEN < aux.ToString("yyyyMMdd") Then
-                        'If Array.IndexOf(SinMoraHastaPagoTasamenor, txtanexo.Text) >= 0 Then 'ELISANDER sin moratorios despues del ultimo pago
-                        If TercioDeTasa = True Then
-                            Tasa = TasaAUX / 3
-                        Else
-                            Tasa = TasaAUX
-                        End If
-                    End If
-                    ' End If
-                    rri("dias") = dias
-                    rri("tasabp") = Tasa
-                    rri("saldoinicial") = SaldoIni
-                    rri("concepto") = "INTERESES"
-                    rri("Facturado") = 1
-                    rri("Factura") = ""
-                    rri("FolioFiscal") = ""
-                    rri("importe") = 0
-                    rri("fega") = 0
-                    rri("garantia") = 0
-                    Intereses = rri("saldoinicial") * (Tasa / 100 / 360) * dias
-                    If txtanexo.Text = "080020036" And txtCiclo.Text = "20" And fec = CDate("30/11/2018") And aux = CDate("30/11/2018") Then
-                        Intereses = 0
-                    End If
-                    rri("intereses") = Intereses
-                    SaldoFin = SaldoIni + Intereses
-                    rri("saldofinal") = SaldoFin
-                    UltimoCorte = rri("fechafinal")
-                    aux = aux.AddDays(1)
-                    f = aux.ToString("yyyyMMdd")
-                    If Vencido = 1 Then
-                        UltimoCorte = FechaVen.ToString("yyyyMMdd")
-                    End If
-                    '+++++Seguro de Vida+++++++++++++++++++++++++++++++++++++++++++++++++++
-                    FecVid = CadenaFecha(UltimoCorte)
-                    If FecVid.AddDays(1).Day = 1 Then
-                        FinMes = 1
-                    ElseIf FecVid.AddDays(1).Day = 2 Then
-                        FinMes = 0
-                    End If
-                    If FecVid = FecTope Then
-                        FinMes = 0
-                    End If
-
-                    If FecVid.AddDays(FinMes).Day = 1 And TasaSegVid > 0 And UltimoCorte > "20140901" And CalcSEGVID = True Then 'aplica seguro de vida
                         r.Consecutivo = Consec * 100
                         Me.ProductionDataSet1.DetalleFINAGIL.ImportRow(r)
                         rri = Me.ProductionDataSet1.DetalleFINAGIL.Rows(Consec)
+                        'calcula interes dentro de un mes
                         SaldoIni = SaldoFin
-                        If FecVid.Day = 1 Then
-                            FecVid = FecVid.AddDays(-1)
-                        End If
-                        DatFact = SacaDatosFactura(FecVid.ToString("yyyyMMdd"))
-                        'LINEA Seguro de Vida
+                        'LINEA INETRES
+
                         Consec += 1
+                        '
+
                         rri("Consecutivo") = Consec
-                        rri("fechainicial") = FecVid.ToString("yyyyMMdd")
-                        rri("fechafinal") = FecVid.ToString("yyyyMMdd")
-                        rri("dias") = 0
-                        rri("tasabp") = 0
-                        rri("Intereses") = 0
+                        fec = fec.AddDays(Correcion * -1)
+                        rri("fechainicial") = fec.ToString("yyyyMMdd")
+                        fec = fec.AddDays(Correcion)
+                        rri("fechafinal") = aux.ToString("yyyyMMdd")
+                        'If Array.IndexOf(SinMoraHastaPago, txtanexo.Text) >= 0 Then 'ELISANDER sin moratorios despues del ultimo pago
+                        If UltimoPAGO_GEN.Trim <> "" And UltimoPAGO_GEN < aux.ToString("yyyyMMdd") Then
+                            'If Array.IndexOf(SinMoraHastaPagoTasamenor, txtanexo.Text) >= 0 Then 'ELISANDER sin moratorios despues del ultimo pago
+                            If TercioDeTasa = True Then
+                                Tasa = TasaAUX / 3
+                            Else
+                                Tasa = TasaAUX
+                            End If
+                        End If
+                        ' End If
+                        rri("dias") = dias
+                        rri("tasabp") = Tasa
                         rri("saldoinicial") = SaldoIni
-                        rri("concepto") = "SEGURO DE VIDA"
-                        rri("Facturado") = DatFact(0)
-                        rri("Factura") = DatFact(1)
-                        rri("FolioFiscal") = DatFact(2)
-                        SegVid = CalculaPrima(rri.Cliente, UltimoCorte, SaldoIni)
-                        rri("Importe") = SegVid
+                        rri("concepto") = "INTERESES"
+                        rri("Facturado") = 1
+                        rri("Factura") = ""
+                        rri("FolioFiscal") = ""
+                        rri("importe") = 0
                         rri("fega") = 0
                         rri("garantia") = 0
+                        Intereses = rri("saldoinicial") * (Tasa / 100 / 360) * dias
+                        If txtanexo.Text = "080020036" And txtCiclo.Text = "20" And fec = CDate("30/11/2018") And aux = CDate("30/11/2018") Then
+                            Intereses = 0
+                        End If
+                        rri("intereses") = Intereses
+                        SaldoFin = SaldoIni + Intereses
+                        rri("saldofinal") = SaldoFin
+                        UltimoCorte = rri("fechafinal")
+                        aux = aux.AddDays(1)
+                        f = aux.ToString("yyyyMMdd")
+                        If Vencido = 1 Then
+                            UltimoCorte = FechaVen.ToString("yyyyMMdd")
+                        End If
+                        '+++++Seguro de Vida+++++++++++++++++++++++++++++++++++++++++++++++++++
+                        FecVid = CadenaFecha(UltimoCorte)
+                        If FecVid.AddDays(1).Day = 1 Then
+                            FinMes = 1
+                        ElseIf FecVid.AddDays(1).Day = 2 Then
+                            FinMes = 0
+                        End If
+                        If FecVid = FecTope Then
+                            FinMes = 0
+                        End If
 
-                        '***** SE QUITA FEGA Y GL DEL SEGURO DE VIDA A PARTIR DEL MES DE SEPTIEMBRE, ELISANDER PINEDA #ect 26092015.N
-                        If FecVid > FechaQuitaFega Then
+                        If FecVid.AddDays(FinMes).Day = 1 And TasaSegVid > 0 And UltimoCorte > "20140901" And CalcSEGVID = True Then 'aplica seguro de vida
+                            r.Consecutivo = Consec * 100
+                            Me.ProductionDataSet1.DetalleFINAGIL.ImportRow(r)
+                            rri = Me.ProductionDataSet1.DetalleFINAGIL.Rows(Consec)
+                            SaldoIni = SaldoFin
+                            If FecVid.Day = 1 Then
+                                FecVid = FecVid.AddDays(-1)
+                            End If
+                            DatFact = SacaDatosFactura(FecVid.ToString("yyyyMMdd"))
+                            'LINEA Seguro de Vida
+                            Consec += 1
+                            rri("Consecutivo") = Consec
+                            rri("fechainicial") = FecVid.ToString("yyyyMMdd")
+                            rri("fechafinal") = FecVid.ToString("yyyyMMdd")
+                            rri("dias") = 0
+                            rri("tasabp") = 0
+                            rri("Intereses") = 0
+                            rri("saldoinicial") = SaldoIni
+                            rri("concepto") = "SEGURO DE VIDA"
+                            rri("Facturado") = DatFact(0)
+                            rri("Factura") = DatFact(1)
+                            rri("FolioFiscal") = DatFact(2)
+                            SegVid = CalculaPrima(rri.Cliente, UltimoCorte, SaldoIni)
+                            rri("Importe") = SegVid
                             rri("fega") = 0
                             rri("garantia") = 0
+
+                            '***** SE QUITA FEGA Y GL DEL SEGURO DE VIDA A PARTIR DEL MES DE SEPTIEMBRE, ELISANDER PINEDA #ect 26092015.N
+                            If FecVid > FechaQuitaFega Then
+                                rri("fega") = 0
+                                rri("garantia") = 0
+                            End If
+                            '**************************************************************************
+                            SaldoFin = SaldoIni + SegVid + rri("fega") + rri("garantia")
+                            rri("saldofinal") = SaldoFin
                         End If
-                        '**************************************************************************
-                        SaldoFin = SaldoIni + SegVid + rri("fega") + rri("garantia")
-                        rri("saldofinal") = SaldoFin
                     End If
                     '++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
                     If Vencido = 1 Then
                         'If Bandera = False Then
-                        GeneraIntereses(f, Consec, r, SaldoFin, 0, H)
+                        GeneraIntereses(f, Consec, r, SaldoFin, 0, H, efectivoFindeMES)
                         'End If
                     Else
                         'If Bandera = False Then
-                        GeneraIntereses(f, Consec, r, SaldoFin, 1, H)
+                        GeneraIntereses(f, Consec, r, SaldoFin, 1, H, efectivoFindeMES)
                         ' End If
                     End If
 
@@ -931,7 +944,7 @@ Public Class frmEstadoCuentaAvio
 
             Else
                 If SaldoFin > 0 Then
-                    GeneraIntereses(f, Consec, r, SaldoFin, 1, H)
+                    GeneraIntereses(f, Consec, r, SaldoFin, 1, H, efectivoFindeMES)
                 End If
             End If
 
