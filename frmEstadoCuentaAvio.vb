@@ -20,6 +20,7 @@ Public Class frmEstadoCuentaAvio
     Dim PorcGarLIQ As Decimal
     Dim arg() As String
     Dim ArreSegVid(50, 3) As String
+    Dim ArreFactInte(50, 3) As String
     Dim DatFact(3) As String
     Dim SegVid As Double
     Dim FecVid As Date
@@ -862,9 +863,10 @@ Public Class frmEstadoCuentaAvio
                         rri("tasabp") = Tasa
                         rri("saldoinicial") = SaldoIni
                         rri("concepto") = "INTERESES"
-                        rri("Facturado") = 1
-                        rri("Factura") = ""
-                        rri("FolioFiscal") = ""
+                        DatFact = SacaDatosFacturaINTERES(aux.ToString("yyyyMMdd"))
+                        rri("Facturado") = DatFact(0)
+                        rri("Factura") = DatFact(1)
+                        rri("FolioFiscal") = DatFact(2)
                         rri("importe") = 0
                         rri("fega") = 0
                         rri("garantia") = 0
@@ -1030,9 +1032,10 @@ Public Class frmEstadoCuentaAvio
                 rri("tasabp") = Tasa
                 rri("saldoinicial") = SaldoIni
                 rri("concepto") = "INTERESES"
-                rri("Facturado") = 1
-                rri("Factura") = ""
-                rri("FolioFiscal") = ""
+                DatFact = SacaDatosFacturaINTERES(aux.ToString("yyyyMMdd"))
+                rri("Facturado") = DatFact(0)
+                rri("Factura") = DatFact(1)
+                rri("FolioFiscal") = DatFact(2)
                 rri("importe") = 0
                 rri("fega") = 0
                 rri("garantia") = 0
@@ -1138,9 +1141,10 @@ Public Class frmEstadoCuentaAvio
                     rri("tasabp") = Tasa
                     rri("saldoinicial") = SaldoIni
                     rri("concepto") = "INTERESES"
-                    rri("Facturado") = 1
-                    rri("Factura") = ""
-                    rri("FolioFiscal") = ""
+                    DatFact = SacaDatosFacturaINTERES(aux.ToString("yyyyMMdd"))
+                    rri("Facturado") = DatFact(0)
+                    rri("Factura") = DatFact(1)
+                    rri("FolioFiscal") = DatFact(2)
                     rri("importe") = 0
                     rri("fega") = 0
                     rri("garantia") = 0
@@ -1199,6 +1203,7 @@ Public Class frmEstadoCuentaAvio
 
     Function SeguroVida(ByVal a As String, ByVal c As String) As Decimal
         Dim Ta As New Estado_de_Cuenta.ProductionDataSet.DetalleFINAGILDataTable
+        '-SEG VIDA
         Me.DetalleFINAGILTableAdapter.FillByAnexoFecha(Ta, txtanexo.Text, txtCiclo.Text)
         Dim x As Integer = 0
         If Ta.Rows.Count > 0 Then
@@ -1208,6 +1213,20 @@ Public Class frmEstadoCuentaAvio
                     ArreSegVid(x, 1) = r.Factura
                     ArreSegVid(x, 2) = r.FolioFiscal
                     ArreSegVid(x, 3) = r.FechaFinal
+                    x += 1
+                End If
+            Next
+        End If
+        '-iNTERES
+        Me.DetalleFINAGILTableAdapter.FillByInteres(Ta, txtanexo.Text, txtCiclo.Text)
+        x = 0
+        If Ta.Rows.Count > 0 Then
+            For Each r As ProductionDataSet.DetalleFINAGILRow In Ta.Rows
+                If Trim(r("Concepto")) = "INTERESES" Then
+                    ArreFactInte(x, 0) = r.Facturado
+                    ArreFactInte(x, 1) = r.Factura
+                    ArreFactInte(x, 2) = r.FolioFiscal
+                    ArreFactInte(x, 3) = r.FechaFinal
                     x += 1
                 End If
             Next
@@ -1244,6 +1263,25 @@ Public Class frmEstadoCuentaAvio
             If ArreSegVid(x, 0) = "" Then Exit For
         Next
         SacaDatosFactura = REspuesta
+    End Function
+
+    Private Function SacaDatosFacturaINTERES(ByVal f As String) As String()
+        Dim REspuesta(3) As String
+        REspuesta(0) = "False"
+        REspuesta(1) = ""
+        REspuesta(2) = ""
+        REspuesta(3) = ""
+        For x = 0 To 50
+            If f = ArreFactInte(x, 3) Then
+                REspuesta(0) = ArreFactInte(x, 0)
+                REspuesta(1) = ArreFactInte(x, 1)
+                REspuesta(2) = ArreFactInte(x, 2)
+                REspuesta(3) = ArreFactInte(x, 3)
+                Exit For
+            End If
+            If ArreFactInte(x, 0) = "" Then Exit For
+        Next
+        SacaDatosFacturaINTERES = REspuesta
     End Function
 
     Private Function CalculaPrima(ByVal Cli As String, ByVal Fec As String, ByVal SaldoAnexo As Double) As Double
