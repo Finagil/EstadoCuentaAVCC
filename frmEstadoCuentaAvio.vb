@@ -1267,12 +1267,17 @@ Public Class frmEstadoCuentaAvio
 
     Private Function SacaDatosFacturaINTERES(ByVal f As String) As String()
         Dim REspuesta(3) As String
-        REspuesta(0) = "False"
+        If UCase(arg(3)) = "ECT" Then
+            REspuesta(0) = "False"
+        Else
+            REspuesta(0) = "True"
+        End If
         REspuesta(1) = ""
         REspuesta(2) = ""
         REspuesta(3) = ""
         For x = 0 To 50
             If f = ArreFactInte(x, 3) Then
+                If ArreFactInte(x, 1) = "" Then Exit For
                 REspuesta(0) = ArreFactInte(x, 0)
                 REspuesta(1) = ArreFactInte(x, 1)
                 REspuesta(2) = ArreFactInte(x, 2)
