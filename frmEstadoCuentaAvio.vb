@@ -59,7 +59,6 @@ Public Class frmEstadoCuentaAvio
             Else
                 MessageBox.Show("No existen ministraciones de este contrato", "Error de Contrato", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
-
         End If
     End Sub
 
@@ -108,9 +107,7 @@ Public Class frmEstadoCuentaAvio
                         CheckProyectado.Checked = False
                         Recalcular2()
                     End If
-
                 End If
-
             End If
 
             'Console.WriteLine("recalc3")
@@ -684,7 +681,8 @@ Public Class frmEstadoCuentaAvio
         Dim ww As New Estado_de_Cuenta.ProductionDataSetTableAdapters.SaldosAvioTableAdapter
         Dim TT As New Estado_de_Cuenta.ProductionDataSet.SaldosAvioDataTable
         ww.TerminaContratos(AHORA.ToString("yyyyMMdd"))
-        ww.Fill(TT)
+        ww.TerminadosConSaldo(AHORA.ToString("yyyyMMdd"))
+        ww.FillByActivos(TT)
         For Each r As Estado_de_Cuenta.ProductionDataSet.SaldosAvioRow In TT.Rows
             txtanexo.Text = r.Anexo
             txtCiclo.Text = r.Ciclo
