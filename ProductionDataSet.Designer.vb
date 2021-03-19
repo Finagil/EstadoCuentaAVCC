@@ -9227,8 +9227,10 @@ Namespace ProductionDataSetTableAdapters
             Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(2).Connection = Me.Connection
             Me._commandCollection(2).CommandText = "SELECT        Anexo, Ciclo, Flcan"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_SaldosAvio"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (F"& _ 
-                "lcan = N'A')"
+                "lcan = N'A') OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         (Flcan = N'w') AND (SUBSTRING(FechaTer"& _ 
+                "minacion, 1, 6) = @AñoMesTerm)"
             Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@AñoMesTerm", Global.System.Data.SqlDbType.VarChar, 1024, Global.System.Data.ParameterDirection.Input, 0, 0, "", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(3) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(3).Connection = Me.Connection
             Me._commandCollection(3).CommandText = "UPDATE       Avios"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET                Flcan = N'T'"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (FechaTerminaci"& _ 
@@ -9273,8 +9275,13 @@ Namespace ProductionDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
-        Public Overloads Overridable Function FillByActivos(ByVal dataTable As ProductionDataSet.SaldosAvioDataTable) As Integer
+        Public Overloads Overridable Function FillByActivos(ByVal dataTable As ProductionDataSet.SaldosAvioDataTable, ByVal AñoMesTerm As String) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(2)
+            If (AñoMesTerm Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("AñoMesTerm")
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(AñoMesTerm,String)
+            End If
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
             End If
@@ -9286,8 +9293,13 @@ Namespace ProductionDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
-        Public Overloads Overridable Function GetDataByActivos() As ProductionDataSet.SaldosAvioDataTable
+        Public Overloads Overridable Function GetDataByActivos(ByVal AñoMesTerm As String) As ProductionDataSet.SaldosAvioDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(2)
+            If (AñoMesTerm Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("AñoMesTerm")
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(AñoMesTerm,String)
+            End If
             Dim dataTable As ProductionDataSet.SaldosAvioDataTable = New ProductionDataSet.SaldosAvioDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable

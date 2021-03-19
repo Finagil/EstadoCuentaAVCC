@@ -682,7 +682,7 @@ Public Class frmEstadoCuentaAvio
         Dim TT As New Estado_de_Cuenta.ProductionDataSet.SaldosAvioDataTable
         ww.TerminaContratos(AHORA.ToString("yyyyMMdd"))
         ww.TerminadosConSaldo(AHORA.ToString("yyyyMMdd"))
-        ww.FillByActivos(TT)
+        ww.FillByActivos(TT, AHORA.ToString("yyyyMM"))
         For Each r As Estado_de_Cuenta.ProductionDataSet.SaldosAvioRow In TT.Rows
             txtanexo.Text = r.Anexo
             txtCiclo.Text = r.Ciclo
